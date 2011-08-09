@@ -8,7 +8,7 @@ application/app/config/parameters.ini
 /application/web/bundles/*
 
 
-*~
+\.#*
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock

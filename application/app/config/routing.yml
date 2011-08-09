@@ -1,3 +1,18 @@
+YunshangMarketBundle:
+    resource: "@YunshangMarketBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+YunshangManageBundle:
+    resource: "@YunshangManageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+YunshangCommonBundle:
+    resource: "@YunshangCommonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
