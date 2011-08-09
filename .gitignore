@@ -3,6 +3,7 @@ application/app/config/parameters.ini
 /application/vendor/
 *~
 /application/app/logs/*
+/application/app/cache/*
 /application/web/uploads/*
 /application/web/bundles/*
 
