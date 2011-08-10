@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html><!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	    <meta name="description" content="long text of this website" />
+		<title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('bundles/yunshangcommon/images/favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/yunshangcommon/css/base.css') }}" type="text/css" media="all" />
+	    <!--[if lt IE 9]>
+	    <script src="{{ asset('bundles/yunshangcommon/js/html5hack.js')}}"></script>
+	    <![endif]-->
+        {% block header %}{% endblock %}
+	</head>
+	<body>
+		<div>
+           {% block content %}
+           {% endblock %}
+		</div>
+	</body>
+</html>
