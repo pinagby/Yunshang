@@ -19,16 +19,11 @@ security:
             pattern:  ^/account/login$
             security: false
 
-        secured_area:
-            pattern:    ^/*
-            form_login:
-                check_path: /account/login_check
-                login_path: /account/login
-            logout:
-                path:   /account/logout
-                target: /
-            anonymous: true
-        member_area:
+        ####!!!!
+        ####@important take care yunshang guys, the sequence of the following section start with yunshang_
+        #### is very important, please make sure the last section pattern match ^/*, otherwise symfony2security
+        #### will ignore all of others after it. Thanks.
+        yunshang_member_area:
             pattern:   ^/(account/*|customer/*)
             form_login:
                 check_path: /account/login_check
@@ -36,8 +31,8 @@ security:
             logout:
                 path:   /account/logout
                 target: /
-            anonymous: false            
-        manage_area:
+            anonymous: false           
+        yunshang_manage_area:
             pattern:   ^/(account/*|manage/*)
             form_login:
                 check_path: /account/login_check
@@ -46,6 +41,15 @@ security:
                 path:   /account/logout
                 target: /
             anonymous: false
+        yunshang_area:
+            pattern:    ^/*
+            form_login:
+                check_path: /account/login_check
+                login_path: /account/login
+            logout:
+                path:   /account/logout
+                target: /
+            anonymous: true
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
