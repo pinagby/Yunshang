@@ -1,12 +1,23 @@
+#@TODO The following welcome section will be removed when we have portal as index.
+#All controllers under market need to be push into /market/ 
+welcome:
+    pattern:  /
+    defaults: { _controller: YunshangMarketBundle:Default:index }
+
+YunshangCustomerBundle:
+    resource: "@YunshangCustomerBundle/Controller/"
+    type:     annotation
+    prefix:   /customer/
+
 YunshangMarketBundle:
     resource: "@YunshangMarketBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /market/
 
 YunshangManageBundle:
     resource: "@YunshangManageBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /manage/
 
 YunshangCommonBundle:
     resource: "@YunshangCommonBundle/Controller/"
