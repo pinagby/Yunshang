@@ -14,6 +14,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $yunshangService = $this->get('YunshangCommonBundle.yunshangService');
+        $yunshangService->init();
+        
         return array();
     }
 }

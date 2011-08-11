@@ -118,7 +118,7 @@ class Member implements AdvancedUserInterface
     /**
      * @var string $salt
      *
-     * @ORM\Column(name="salt", type="string", length=255)
+     * @ORM\Column(name="salt", type="string", length=255,nullable=true)
      */
     private $salt;
 
@@ -401,7 +401,7 @@ class Member implements AdvancedUserInterface
      */
     public function setRoles($roles)
     {
-        $this->roles = $roles;
+        $this->roles = implode(":",$roles);
     }
 
     /**
@@ -436,7 +436,7 @@ class Member implements AdvancedUserInterface
     public function getSalt()
     {
         if(empty($this->salt)){
-            return 'yunshang-auto-sale,http://yunshang.org';
+            return "yunshang-auto-sale,http://yunshang.org";
         }else{
             return $this->sale;            
         }

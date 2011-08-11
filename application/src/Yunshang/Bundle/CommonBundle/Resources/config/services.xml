@@ -17,4 +17,13 @@
         </service>
     </services>
     -->
+    <parameters>
+        <parameter key="YunshangCommonBundle.yunshangService.class">Yunshang\Bundle\CommonBundle\Service\YunshangService</parameter>
+    </parameters>
+    <services>
+        <service id="YunshangCommonBundle.yunshangService" class="%YunshangCommonBundle.yunshangService.class%">
+          <argument type="service" id="doctrine.orm.entity_manager">em</argument>
+          <argument type="service" id="security.encoder_factory" >encoderFactory</argument>
+        </service>
+    </services>
 </container>
