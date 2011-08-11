@@ -2,6 +2,9 @@
 
 namespace Yunshang\Bundle\CommonBundle\Entity\Account;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="member")
  * @ORM\Entity
  */
-class Member
+class Member implements AdvancedUserInterface
 {
     /**
      * @var integer $id
@@ -70,7 +73,7 @@ class Member
      */
     private $birthday;
 
-    /**
+    /**pp
      * @var string $gender
      *
      * @ORM\Column(name="gender", type="string", length=8,nullable=true)
@@ -408,7 +411,11 @@ class Member
      */
     public function getRoles()
     {
-        return $this->roles;
+        if(empty($this->roles)){
+            return array('ROLE_REGISTER');
+        }else{
+            return explode(":",$this->roles);
+        }
     }
 
     /**
@@ -428,7 +435,11 @@ class Member
      */
     public function getSalt()
     {
-        return $this->salt;
+        if(empty($this->salt)){
+            return 'yunshang-auto-sale,http://yunshang.org';
+        }else{
+            return $this->sale;            
+        }
     }
 
     /**
@@ -490,4 +501,29 @@ class Member
     {
         return $this->locked;
     }
+
+    public function eraseCredentials(){
+        
+    }
+
+    /**
+     *Whether data which is relevant for the authentication status has changed.
+     */
+    public function equals(UserInterface $user){
+        return true;
+    }
+    
+    public function isAccountNonExpired(){
+        return true;
+    }
+    function isAccountNonLocked(){
+        return $this->getLocked();
+    }
+    function isCredentialsNonExpired(){
+        return true;
+    }
+    function isEnabled(){
+        return $this->getEnabled();
+    }
+ 
 }
