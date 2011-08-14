@@ -1,0 +1,24 @@
+/* manage.css */
+#manage_header{
+ position:relative; 
+ height:120px; 
+ background-color:#cccccc; 
+ width:100%;
+ display:block;
+ overflow:auto;
+} 
+ 
+#manage_content{
+ background-color: #ffffff;  
+ position: relative;
+                 min-height:420px;
+ }
+ 
+#manage_footer{
+ height:60px; 
+  background-color:#cccccc; 
+ clear:both;
+ display:block;
+ overflow:auto;
+} 
+

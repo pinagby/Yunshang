@@ -1,11 +1,19 @@
 {% extends "YunshangCommonBundle::layout/base.html.twig" %}
 {% block header %}
-<script src="{{ asset('bundles/yunshangcommon/js/yui-min.js')}}"></script>
+        <link rel="stylesheet" href="{{ asset('bundles/yunshangmanage/css/manage.css') }}" type="text/css" media="all" />
+        <script src="{{ asset('bundles/yunshangcommon/js/yui-min.js')}}"></script>
 {% endblock %}
 
 {% block content %}
-
-{% block manage_content %}
-{% endblock %}
+<div>
+	<div id="manage_header"><h2>Head</h2></div>
+	<div id="manage_wrapper" class="clearfix">
+			<div id="manage_content">
+            {% block manage_content %}
+            {% endblock %}
+            </div>
+	</div>
+	<div id="manage_footer"><h2>Footer</h2></div>
+	</div>
 
 {% endblock %}

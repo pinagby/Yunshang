@@ -44,8 +44,8 @@ security:
 #                remember_me_parameter: _remember_me
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/customer/*, roles: IS_AUTHENTICATED_REGISTER}
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/customer/*, roles: IS_AUTHENTICATED_MANAGER}
         - { path: ^/manager/*, roles: IS_AUTHENTICATED_MANAGER}
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         
