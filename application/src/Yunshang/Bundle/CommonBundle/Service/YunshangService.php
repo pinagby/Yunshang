@@ -45,6 +45,13 @@ class YunshangService
             $this->em->persist($member);
             $this->em->flush();
         }
+    }
 
+    public function setOptions($key,$value,$args){
+        
+    }
+
+    public function getOptions($key){
+        
     }
 }

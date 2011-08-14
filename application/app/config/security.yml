@@ -3,8 +3,9 @@ security:
         Yunshang\Bundle\CommonBundle\Entity\Account\Member: sha512
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_REGISTER:    ROLE_USER
+        ROLE_MANAGER:     ROLE_REGISTER
+        ROLE_ADMIN:       [ROLE_REGISTER,ROLE_USER,ROLE_MANAGER,ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         users:
@@ -19,56 +20,6 @@ security:
             pattern:  ^/account/login$
             security: false
 
-        ####!!!!
-        ####@important take care yunshang guys, the sequence of the following section start with yunshang_
-        #### is very important, please make sure the last section pattern match ^/*, otherwise symfony2security
-        #### will ignore all of others after it. Thanks.
-        yunshang_member_area:
-            pattern:   ^/(account/*|customer/*)
-            form_login:
-                check_path: /account/login_check
-                login_path: /account/login
-                always_use_default_target_path: false
-                default_target_path: /
-                target_path_parameter: _target_path
-                remember_me: true
-            logout:
-                path:   /account/logout
-                target: /
-            anonymous: false
-            remember_me:
-#                token_provider: name
-                key: sdkfhasiuyiuerhksdf
-                name: yunshang_rem_id_key
-                lifetime: 360000 # in seconds
-                path: /
-                secure: true
-                httponly: true
-                always_remember_me: false
-                remember_me_parameter: _remember_me
-        yunshang_manage_area:
-            pattern:   ^/(account/*|manage/*)
-            form_login:
-                check_path: /account/login_check
-                login_path: /account/login
-                always_use_default_target_path: false
-                default_target_path: /
-                target_path_parameter: _target_path
-                remember_me: true
-            logout:
-                path:   /account/logout
-                target: /
-            anonymous: false
-            remember_me:
-#                token_provider: name
-                key: sdkfhasiuyiuerhksdf
-                name: yunshang_rem_id_key
-                lifetime: 360000 # in seconds
-                path: /
-                secure: true
-                httponly: true
-                always_remember_me: false
-                remember_me_parameter: _remember_me
         yunshang_area:
             pattern:    ^/*
             form_login:
@@ -77,22 +28,24 @@ security:
                 always_use_default_target_path: false
                 default_target_path: /
                 target_path_parameter: _target_path
-                remember_me: true
+#                remember_me: true
             logout:
                 path:   /account/logout
                 target: /
             anonymous: true
-            remember_me:
-#                token_provider: name
-                key: sdkfhasiuyiuerhksdf
-                name: yunshang_rem_id_key
-                lifetime: 360000 # in seconds
-                path: /
-                secure: true
-                httponly: true
-                always_remember_me: false
-                remember_me_parameter: _remember_me
+#            remember_me:
+#                key: sdkfhasiuyiuerhksdf
+#                name: yunshang_rem_id_key
+#                lifetime: 360000 # in seconds
+#                path: /
+#                secure: true
+#                httponly: true
+#                always_remember_me: false
+#                remember_me_parameter: _remember_me
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/customer/*, roles: IS_AUTHENTICATED_MANAGER}
+        - { path: ^/manager/*, roles: IS_AUTHENTICATED_MANAGER}
+        - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        

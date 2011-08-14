@@ -415,7 +415,7 @@ class Member implements AdvancedUserInterface
             return array('ROLE_REGISTER');
         }else{
             return explode(":",$this->roles);
-        }
+            }
     }
 
     /**
@@ -512,12 +512,12 @@ class Member implements AdvancedUserInterface
     public function equals(UserInterface $user){
         return true;
     }
-    
+
     public function isAccountNonExpired(){
         return true;
     }
     function isAccountNonLocked(){
-        return $this->getLocked();
+        return !$this->getLocked();
     }
     function isCredentialsNonExpired(){
         return true;

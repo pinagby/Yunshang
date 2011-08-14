@@ -16,7 +16,6 @@ class DefaultController extends Controller
     {
         $yunshangService = $this->get('YunshangCommonBundle.yunshangService');
         $yunshangService->init();
-        
         return array();
     }
 }
