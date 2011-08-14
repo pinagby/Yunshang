@@ -6,14 +6,96 @@
 
 {% block content %}
 <div>
-	<div id="manage_header"><h2>Head</h2></div>
+	<div id="manage_header">
+        <div id="manage_logo">logo</div>
+        <div id="manage_top_nav">Logged in as somebody, datetime, message notice, help, <a href="{{path('account_logout')}}">logout</a>
+</div>
+        <div id="manage_main_nav">
+        <ul>
+          <li>Dashboard</li>
+          <li>Sales
+            <ul>
+              <li>Orders</li>
+              <li>Invoices</li>
+              <li>Shipments</li>
+              <li>Credit Memos</li>
+              <li>Transactions</li>
+              <li>Billing Agreement</li>
+              <li>Terms and conditions</li>
+              <li>Tax</li>
+            </ul>
+          </li>
+          <li>Catalog
+            <ul>
+               <li>Manage Products</li>
+               <li>TheFind feed</li>
+               <li>Manage Category</li>
+               <li>Attributes</li>
+               <li>Revies and Ratings</li>
+               <li>Tags</li>
+            </ul>
+          </li>
+          <li>CRM
+            <ul>
+              <li>Manage Customers</li>
+              <li>Custom Groups</li>
+            </ul>
+          </li>
+          <li>Promotions
+          </li>
+          <li>Messages</li>
+          <li>CMS
+            <ul>
+              <li>Pages</li>
+              <li>Articles</li>
+              <li>Polls</li>
+            </ul>
+          </li>
+          <li>Reports
+            <ul>
+              <li>Sales Reports</li>
+              <li>Shopping Cart Reports</li>
+              <li>Products Reports</li>
+              <li>Customers Reports</li>
+              <li>Tags Reports</li>
+            </ul>
+          </li>
+          <li>System
+            <ul>
+              <li>Account</li>
+              <li>Notification</li>
+              <li>Tools</li>
+              <li>Web Service</li>
+              <li>SEO</li>
+              <li>Design</li>
+              <li>Import&Export</li>
+              <li>Currency Rates</li>
+              <li>Custom Variables</li>
+              <li>Configuration</li>
+              <li>Order Statuses</li>
+              <li>Manage Stores</li>
+              <li>Index Management</li>
+              <li>Cache Management</li>
+              <li>Permissions</li>
+              <li>Custom Variables</li>
+              <li>Transactional Emails</li>
+            </ul>
+          </li>
+        </ul>
+        </div>
+    </div>
 	<div id="manage_wrapper" class="clearfix">
 			<div id="manage_content">
             {% block manage_content %}
             {% endblock %}
             </div>
 	</div>
-	<div id="manage_footer"><h2>Footer</h2></div>
+	<div id="manage_footer">
+      Interface Locale:Chinese, English, Navi
+        <center><a href="http://yunshang.org" target="_blank">yunshang.org</a></center>
+        Version:
+        
+    </div>
 	</div>
 
 {% endblock %}
