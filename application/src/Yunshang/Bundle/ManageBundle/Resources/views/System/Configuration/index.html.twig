@@ -1,0 +1,14 @@
+{% extends "YunshangManageBundle::layout/manage_base.html.twig" %}
+
+{% block title %}
+configuration
+{% endblock %}
+
+{% block manage_content %}
+
+<form action="{{ path('manage_system_configuration_index') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+
+{% endblock %}

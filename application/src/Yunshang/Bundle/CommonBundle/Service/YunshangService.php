@@ -7,6 +7,8 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 use Doctrine\ORM\EntityManager;
 
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member;
+use Yunshang\Bundle\CommonBundle\Entity\Infrastructure\Options;
+
 
 class YunshangService
 {
@@ -47,11 +49,52 @@ class YunshangService
         }
     }
 
-    public function setOptions($key,$value,$args){
-        
+    /**
+     * 
+     *
+     */
+    public function setOptions($key,$value,$args=NULL){
+        $options = $this->em
+        ->getRepository('YunshangCommonBundle:Infrastructure/Options')
+        ->findOneByKey($key);
+        if (!$options) {
+            $options = new Options();
+            $options->setKey($key);
+            $options->setValue($value);
+            $options->setCreated(date_create(date("F j, Y, g:i a")));
+            $options->setModified($options->getCreated());
+            $options->setVersion(1);
+
+            $options->setRemark('');
+            $options->setStatus(true);
+            $options->setCustomField('');
+
+        }else{
+            $options->setValue($value);
+            $options->setModified(date_create(date("F j, Y, g:i a")));
+            $options->setVersion($options->getVersion()+1);
+        }
+
+        if(NULL!==$args&&is_array($args)){
+            if(isset('remark',$args)){
+                $options->setRemark($args['remark']);
+            }
+            if(isset('status',$args)){
+                $options->setStatus($args['status']);
+            }
+            if(isset('customField',$args)){
+                $options->setCustomField($args['customField']);
+            }
+        }
+
+        $this->em->persist($options);
+        $this->em->flush();
     }
 
     public function getOptions($key){
-        
+        $options = $this->em
+        ->getRepository('YunshangCommonBundle:Infrastructure/Options')
+        ->findOneByKey($key);
+        return $options;       
     }
 }
