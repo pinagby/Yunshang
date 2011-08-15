@@ -5,6 +5,7 @@ configuration
 {% endblock %}
 
 {% block manage_content %}
+{% trans %}Yunshang{% endtrans %}
 
 <form action="{{ path('manage_system_configuration_index') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}

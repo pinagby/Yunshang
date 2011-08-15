@@ -50,4 +50,33 @@ class DefaultController extends Controller
     {
         
     }
+
+    /**
+     *@Route("/locale/en_US",name="locale_en_US")
+     */
+    public function setEnLocaleAction(){
+        $this->get('session')->setLocale('en_US');
+                return $this->redirect($this->generateUrl('manage_system_configuration_index'));
+        
+    }
+
+    /**
+     *@Route("/locale/zh_CN",name="locale_zh_CN")
+     */
+    public function setZhCNLocaleAction(){
+        $this->get('session')->setLocale('zh_CN');        
+                return $this->redirect($this->generateUrl('manage_system_configuration_index'));
+    }
+
+    /**
+     * @Route("/locale/navi",name="locale_navi")
+     * from Pandora: they can not take whatever they want
+     * I see you.
+     * in Navi: Nga yawne lu oer.
+     * in English: I love you.
+     */
+    public function setNaviLocaleAction(){
+        $this->get('session')->setLocale('navi');
+                return $this->redirect($this->generateUrl('manage_system_configuration_index'));
+    }
 }

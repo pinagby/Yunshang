@@ -76,13 +76,13 @@ class YunshangService
         }
 
         if(NULL!==$args&&is_array($args)){
-            if(isset('remark',$args)){
+            if(isset($args['remark'])){
                 $options->setRemark($args['remark']);
             }
-            if(isset('status',$args)){
+            if(isset($args['status'])){
                 $options->setStatus($args['status']);
             }
-            if(isset('customField',$args)){
+            if(isset($args['customField'])){
                 $options->setCustomField($args['customField']);
             }
         }
