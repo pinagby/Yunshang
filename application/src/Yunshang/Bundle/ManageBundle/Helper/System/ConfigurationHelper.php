@@ -2,6 +2,8 @@
 
 namespace Yunshang\Bundle\ManageBundle\Helper\System;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Helper Class as POJO, for system\configuration form.
  * @author <a href="http://haulynjason.net">Haulyn Jason</a>
@@ -9,6 +11,9 @@ namespace Yunshang\Bundle\ManageBundle\Helper\System;
  */
 class ConfigurationHelper{
 
+    /**
+     * @Assert\NotBlank()
+     */
     private $shopName;
 
     public function setShopName($shopName){
