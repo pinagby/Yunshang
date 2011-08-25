@@ -17,4 +17,13 @@
         </service>
     </services>
     -->
+    <parameters>
+        <parameter key="YunshangManageBundle.configurationService.class">Yunshang\Bundle\ManageBundle\Service\ConfigurationService</parameter>
+    </parameters>
+    <services>
+        <service id="YunshangManageBundle.configurationService" class="%YunshangManageBundle.configurationService.class%">
+          <argument type="service" id="YunshangCommonBundle.yunshangService">yunshangService</argument>
+        </service>
+    </services>
+
 </container>

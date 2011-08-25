@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 use Doctrine\ORM\EntityManager;
 
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member;
-use Yunshang\Bundle\CommonBundle\Entity\Infrastructure\Options;
+use Yunshang\Bundle\CommonBundle\Entity\Infrastructure\Options as Options;
 
 
 class YunshangService
@@ -55,7 +55,7 @@ class YunshangService
      */
     public function setOptions($key,$value,$args=NULL){
         $options = $this->em
-        ->getRepository('YunshangCommonBundle:Infrastructure/Options')
+        ->getRepository('YunshangCommonBundle:Infrastructure\Options')
         ->findOneByKey($key);
         if (!$options) {
             $options = new Options();
@@ -76,13 +76,13 @@ class YunshangService
         }
 
         if(NULL!==$args&&is_array($args)){
-            if(isset('remark',$args)){
+            if(isset($args['remark'])){
                 $options->setRemark($args['remark']);
             }
-            if(isset('status',$args)){
+            if(isset($args['status'])){
                 $options->setStatus($args['status']);
             }
-            if(isset('customField',$args)){
+            if(isset($args['customField'])){
                 $options->setCustomField($args['customField']);
             }
         }
@@ -93,7 +93,7 @@ class YunshangService
 
     public function getOptions($key){
         $options = $this->em
-        ->getRepository('YunshangCommonBundle:Infrastructure/Options')
+        ->getRepository('YunshangCommonBundle:Infrastructure\Options')
         ->findOneByKey($key);
         return $options;       
     }

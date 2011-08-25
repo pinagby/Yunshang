@@ -2,6 +2,7 @@
 
 namespace Yunshang\Bundle\ManageBundle\Controller\System;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -15,16 +16,16 @@ class ConfigurationController extends Controller
      * @Route("/system/configuration",name="manage_system_configuration_index")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        //@todo query from database first.
-        $configurationHelper = new ConfigurationHelper();
+        $configurationService = $this->get("YunshangManageBundle.configurationService");
+        $configurationHelper = $configurationService->getConfigurationHelper();
         $form= $this->createFormBuilder($configurationHelper)
             ->add('shopName', 'text')
             ->add('shopDescription','textarea')
-            ->add('shopTimezone','timezone')
-            ->add('shopLanguage','choice',array(
-                      'choices'=>array('en_US'=>'English','zh_CN'=>'Chinese','navi_Pandora'=>'Navi')))
+//            ->add('shopTimezone','timezone')
+//            ->add('shopLanguage','choice',array(
+//                      'choices'=>array('en_US'=>'English','zh_CN'=>'Chinese','navi_Pandora'=>'Navi')))
             ->add('shopProvince','text')
             ->add('shopCity','text')
             ->add('shopAddress','text')
@@ -40,16 +41,15 @@ class ConfigurationController extends Controller
             ->add('shopSupportMobile','text')
             ->add('shopAnnouncement','textarea')
             ->getForm();
-        return array('form'=>$form->createView());
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
 
-            //@todo add validation on server side.
             if ($form->isValid()) {
-                //@todo save configuration
+                $configurationService->setConfigurationHelper($configurationHelper);
                 return $this->redirect($this->generateUrl('manage_system_configuration_index'));
             }
         }
+        return array('form'=>$form->createView());
     }
 }

@@ -16,7 +16,7 @@ class ConfigurationHelper{
     }
 
     public function getShopName(){
-        return $this->shopName;
+        return $this->shopName?$this->shopName:"";
     }
 
     public static function getShopNameKey(){
@@ -30,7 +30,7 @@ class ConfigurationHelper{
     }
 
     public function getShopDescription(){
-        return $this->shopDescription;
+        return $this->shopDescription?$this->shopDescription:"";
     }
 
     public static function getShopDescriptionKey(){
@@ -44,7 +44,7 @@ class ConfigurationHelper{
     }
 
     public function getShopLocale(){
-        return $this->shopLocale;
+        return $this->shopLocale?$this->shopLocale:"";
     }
 
     public static function getShopLocaleKey(){
@@ -59,7 +59,7 @@ class ConfigurationHelper{
     }
 
     public function getShopTimezone(){
-        return $this->shopTimezone;
+        return $this->shopTimezone?$this->shopTimezone:"";
     }
 
     public static function getShopTimezoneKey(){
@@ -73,7 +73,7 @@ class ConfigurationHelper{
     }
 
     public function getShopLanguage(){
-        return $this->shopLanguage;
+        return $this->shopLanguage?$this->shopLanguage:"";
     }
 
     public static function getShopLanguageKey(){
@@ -87,7 +87,7 @@ class ConfigurationHelper{
     }
 
     public function getShopProvince(){
-        return $this->shopProvince;
+        return $this->shopProvince?$this->shopProvince:"";
     }
 
     public static function getShopProvinceKey(){
@@ -101,7 +101,7 @@ class ConfigurationHelper{
     }
 
     public function getShopCity(){
-        return $this->shopCity;
+        return $this->shopCity?$this->shopCity:"";
     }
 
     public static function getShopCityKey(){
@@ -111,11 +111,11 @@ class ConfigurationHelper{
     private $shopAddress ;
 
     public function setShopAddress($shopAddress){
-        $this->shopAddress($shopAddress);
+        $this->shopAddress = $shopAddress;
     }
 
     public function getShopAddress(){
-        return $this->shopAddress;        
+        return $this->shopAddress?$this->shopAddress:"";        
     }
 
     public static function getShopAddressKey(){
@@ -129,7 +129,7 @@ class ConfigurationHelper{
     }
 
     public function getShopQQ(){
-        return $this->shopQQ;
+        return $this->shopQQ?$this->shopQQ:"";
     }
 
     public static function getShopQQKey(){
@@ -143,7 +143,7 @@ class ConfigurationHelper{
     }
 
     public function getShopWangwang(){
-        return $this->shopWangwang;
+        return $this->shopWangwang?$this->shopWangwang:"";
     }
 
     public static function getShopWangwangKey(){
@@ -157,7 +157,7 @@ class ConfigurationHelper{
     }
 
     public function getShopSkype(){
-        return $this->shopSkype;
+        return $this->shopSkype?$this->shopSkype:"";
     }
 
     public static function getShopSkypeKey(){
@@ -171,7 +171,7 @@ class ConfigurationHelper{
     }
 
     public function getShopYahooMessage(){
-        return $this->shopYahooMessage;
+        return $this->shopYahooMessage?$this->shopYahooMessage:"";
     }
 
     public static function getShopYahooMessageKey(){
@@ -185,7 +185,7 @@ class ConfigurationHelper{
     }
 
     public function getShopMsn(){
-        return $this->shopMsn;
+        return $this->shopMsn?$this->shopMsn:"";
     }
 
     public static function getShopMsnKey(){
@@ -199,7 +199,7 @@ class ConfigurationHelper{
     }
 
     public function getShopEmail(){
-        return $this->shopEmail;
+        return $this->shopEmail?$this->shopEmail:"";
     }
 
     public static function getShopEmailKey(){
@@ -213,7 +213,7 @@ class ConfigurationHelper{
     }
 
     public function getShopSalesPhone(){
-        return $this->shopSalesPhone;
+        return $this->shopSalesPhone?$this->shopSalesPhone:"";
     }
 
     public static function getShopSalesPhoneKey(){
@@ -227,7 +227,7 @@ class ConfigurationHelper{
     }
 
     public function getShopSalesMobile() {
-        return $this->shopSalesMobile;
+        return $this->shopSalesMobile?$this->shopSalesMobile:"";
     }
 
     public static function getShopSalesMobileKey(){
@@ -241,7 +241,7 @@ class ConfigurationHelper{
     }
 
     public function getShopSupportPhone(){
-        return $this->shopSupportPhone;
+        return $this->shopSupportPhone?$this->shopSupportPhone:"";
     }
 
     public static function getShopSupportPhoneKey(){
@@ -255,7 +255,7 @@ class ConfigurationHelper{
     }
 
     public function getShopSupportMobile(){
-        return $this->shopSupportMobile;
+        return $this->shopSupportMobile?$this->shopSupportMobile:"";
     }
 
     public static function getShopSupportMobileKey(){
@@ -265,7 +265,7 @@ class ConfigurationHelper{
     private $shopAnnouncement;
 
     public function setShopAnnouncement($shopAnnouncement){
-        $this->shopAnnouncement = $shopAnnouncement;
+        $this->shopAnnouncement = $shopAnnouncement?$this->shopAnnouncement:"";
     }
 
     public function getShopAnnouncement(){
@@ -283,7 +283,7 @@ class ConfigurationHelper{
     }
 
     public function getShopMaxUpload(){
-        return $this->shopMaxUpload;
+        return $this->shopMaxUpload?$this->shopMaxUpload:"";
     }
 
     public static function getShopMaxUploadKey(){

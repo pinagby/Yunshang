@@ -247,4 +247,9 @@ class Options
     {
         return $this->customField;
     }
+
+    public function __toString()
+    {
+        return $this->value?$this->value:"";
+    }
 }
