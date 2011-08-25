@@ -2,8 +2,15 @@
 {% block header %}
         <link rel="stylesheet" href="{{ asset('bundles/yunshangmanage/css/manage.css') }}" type="text/css" media="all" />
         <script src="{{ asset('bundles/yunshangcommon/js/yui-min.js')}}"></script>
+<style>
+	.hidden { display:none; }
+	.J_menu a { cursor:pointer; background:#eee; display:inline-block; }
+	.J_menu ul {overflow:hidden; height:0;list-style:none }
+    .nav_ul {display:inline-block;}
+</style>
 {% endblock %}
 
+        
 {% block content %}
 <div>
 	<div id="manage_header">
@@ -11,74 +18,74 @@
         <div id="manage_top_nav">Logged in as somebody, datetime, message notice, help, <a href="{{path('account_logout')}}">logout</a>
 </div>
         <div id="manage_main_nav">
-        <ul>
-          <li>Dashboard</li>
-          <li>Sales
-            <ul>
-              <li>Orders</li>
-              <li>Invoices</li>
-              <li>Shipments</li>
-              <li>Credit Memos</li>
-              <li>Transactions</li>
-              <li>Billing Agreement</li>
-              <li>Terms and conditions</li>
-              <li>Tax</li>
+        <ul class="J_menu">
+          <li class="nav_ul"><a href="#main">Dashboard</a></li>
+          <li class="nav_ul"><a href="#main">Sales</a>
+            <ul  class="hidden">
+              <li><a href="child">Orders</a></li>
+              <li><a href="child">Invoices</a></li>
+              <li><a href="child">Shipments</a></li>
+              <li><a href="child">Credit Memos</a></li>
+              <li><a href="child">Transactions</a></li>
+              <li><a href="child">Billing Agreement</a></li>
+              <li><a href="child">Terms and conditions</a></li>
+              <li><a href="child">Tax</a></li>
             </ul>
           </li>
-          <li>Catalog
-            <ul>
-               <li>Manage Products</li>
-               <li>TheFind feed</li>
-               <li>Manage Category</li>
-               <li>Attributes</li>
-               <li>Revies and Ratings</li>
-               <li>Tags</li>
+          <li class="nav_ul"><a href="#main">Catalog</a>
+            <ul class="hidden">
+               <li><a href="child">Manage Products</a></li>
+               <li><a href="child">TheFind feed</a></li>
+               <li><a href="child">Manage Category</a></li>
+               <li><a href="child">Attributes</a></li>
+               <li><a href="child">Revies and Ratings</a></li>
+               <li><a href="child">Tags</a></li>
             </ul>
           </li>
-          <li>CRM
-            <ul>
-              <li>Manage Customers</li>
-              <li>Custom Groups</li>
+          <li class="nav_ul"><a href="#main">CRM</a>
+            <ul class="hidden">
+              <li><a href="child">Manage Customers</a></li>
+              <li><a href="child">Custom Groups</a></li>
             </ul>
           </li>
-          <li>Promotions
+          <li class="nav_ul"><a href="#main">Promotions</a>
           </li>
-          <li>Messages</li>
-          <li>CMS
-            <ul>
-              <li>Pages</li>
-              <li>Articles</li>
-              <li>Polls</li>
+          <li class="nav_ul"><a href="#main">Messages</a></li>
+          <li class="nav_ul"><a href="#main">CMS</a>
+            <ul class="hidden">
+              <li><a href="child">Pages</a></li>
+              <li><a href="child">Articles</a></li>
+              <li><a href="child">Polls</a></li>
             </ul>
           </li>
-          <li>Reports
-            <ul>
-              <li>Sales Reports</li>
-              <li>Shopping Cart Reports</li>
-              <li>Products Reports</li>
-              <li>Customers Reports</li>
-              <li>Tags Reports</li>
+          <li class="nav_ul"><a href="#main">Reports</a>
+            <ul class="hidden">
+              <li><a href="child">Sales Reports</a></li>
+              <li><a href="child">Shopping Cart Reports</a></li>
+              <li><a href="child">Products Reports</a></li>
+              <li><a href="child">Customers Reports</a></li>
+              <li><a href="child">Tags Reports</a></li>
             </ul>
           </li>
-          <li>System
-            <ul>
-              <li>Account</li>
-              <li>Notification</li>
-              <li>Tools</li>
-              <li>Web Service</li>
-              <li>SEO</li>
-              <li>Design</li>
-              <li>Import&Export</li>
-              <li>Currency Rates</li>
-              <li>Custom Variables</li>
+          <li class="nav_ul"><a href="#main">System</a>
+            <ul class="hidden">
+              <li><a href="child">Account</a></li>
+              <li><a href="child">Notification</a></li>
+              <li><a href="child">Tools</a></li>
+              <li><a href="child">Web Service</a></li>
+              <li><a href="child">SEO</a></li>
+              <li><a href="child">Design</a></li>
+              <li><a href="child">Import&Export</a></li>
+              <li><a href="child">Currency Rates</a></li>
+              <li><a href="child">Custom Variables</a></li>
               <li><a href="{{path('manage_system_configuration_index')}}">Configuration</a></li>
-              <li>Order Statuses</li>
-              <li>Manage Stores</li>
-              <li>Index Management</li>
-              <li>Cache Management</li>
-              <li>Permissions</li>
-              <li>Custom Variables</li>
-              <li>Transactional Emails</li>
+              <li><a href="child">Order Statuses</a></li>
+              <li><a href="child">Manage Stores</a></li>
+              <li><a href="child">Index Management</a></li>
+              <li><a href="child">Cache Management</a></li>
+              <li><a href="child">Permissions</a></li>
+              <li><a href="child">Custom Variables</a></li>
+              <li><a href="child">Transactional Emails</a></li>
             </ul>
           </li>
         </ul>
@@ -99,5 +106,32 @@
         
     </div>
 	</div>
+<script>
+YUI().use('anim', function (Y) {
+	Y.all('.J_menu').on('click', function(e){
+		var el = e.target,
+			child = el.get('parentNode').one('ul');
+		if ( !child ) return;
+		// stop a link event
+		e.preventDefault();
+		// set animate for menu open
+		child.plug(Y.Plugin.NodeFX, {
+			from: {
+				height: function(node) {
+					return node.get('scrollHeight'); 
+				}
+			},
+			to: { height: 1 },
+			easing: Y.Easing.easeOut,
+			duration: 0.5
+		});
+		// toggle child visiable
+		child.toggleClass('hidden');
+		// run animate
+		child.fx.set('reverse', !child.fx.get('reverse')); 
+        child.fx.run();
+	})
+});
+</script>
 
 {% endblock %}
