@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member;
 use Yunshang\Bundle\CommonBundle\Entity\Infrastructure\Options as Options;
-
+use Yunshang\Bundle\MarketBundle\Entity\ProductType as ProductType;
 
 class YunshangService
 {
@@ -47,6 +47,33 @@ class YunshangService
             $this->em->persist($member);
             $this->em->flush();
         }
+
+        
+        $productType = $this->em
+        ->getRepository('YunshangMarketBundle:ProductType')
+        ->find(1);
+
+        if (!$productType){
+            $productType = new ProductType();
+            $productType->setId(1);
+            $productType->setName('Simple Product');
+            $productType->setDescription('Simple Product');
+            $productType->setStatus(true);
+            $productType->setCreated(date_create(date("F j, Y, g:i a")));
+            $productType->setModified($productType->getCreated());
+            $productType->setIsInternel(true);
+        }else if($productType->getName()!=='Simple Product'){
+            $productType->setId(1);
+            $productType->setName('Simple Product');
+            $productType->setDescription('Simple Product');
+            $productType->setStatus(true);
+            $productType->setCreated(date_create(date("F j, Y, g:i a")));
+            $productType->setModified($productType->getCreated());
+            $productType->setIsInternel(true);
+        }
+        $this->em->persist($productType);
+        $this->em->flush();
+        
     }
 
     /**
