@@ -14,6 +14,14 @@ use Yunshang\Bundle\CommonBundle\Helper\AccountRegisterHelper as AccountRegister
 class DefaultController extends Controller
 {
 
+
+    /**
+     *@Route("/account/profile",name="account_profile")
+     *@Template()
+     */
+    public function profileAction(Request $request){
+        return array('error'=>''); 
+    }
     /**
      * @Route("/account/register",name="account_register")
      * @Template()

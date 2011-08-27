@@ -14,7 +14,7 @@ a:hover { background:#07d; color:#fff; }
 
 
 /* wrapper */
-body > div > div { width:980px; margin:100px auto 50px; background-color:#fff; border-radius:10px; box-shadow:0 1px 3px #ccc; }
+#manage_wrapper { width:980px; margin:100px auto 50px; background-color:#fff; border-radius:10px; box-shadow:0 1px 3px #ccc; }
 
 #manage_header,
 #manage_content,
@@ -37,6 +37,16 @@ body > div > div { width:980px; margin:100px auto 50px; background-color:#fff; b
 /* Content */
 #manage_content { position: relative; min-height:420px; font-size:14px; }
 #manage_content hr { height:1px; line-height:1px; overflow:hidden; border-width:1px 0 2px; border-color:#ccc #fff #eee; border-style:solid; background:#ccc; margin:5px 0; }
+#manage_content h1 { font-size:20px; font-weight:bold; color:#000; text-shadow:1px 1px 2px #ccc; border-bottom:1px solid #ededed; margin-bottom:20px; padding:0 10px 10px; }
+
+	/* Form */
+	#form { padding: 50px 50px 10px; }
+	#form div { padding:10px 150px; width: 400px; margin:10px auto; } 
+	#form label { display:inline-block; width:90px; }
+	#form label.required::before { content:'*'; color:#f00; margin-right:5px; }
+	#form div input { width:300px; padding:5px 0; }
+	form .act { width:400px; margin:0 auto 40px; text-align:right; }
+	form .act button { border:0 none; background:#7b2; padding:5px 20px; border-radius:10px; font-weight:bold; letter-spacing:1px; border:2px solid #eee; color:#fff; }
 
 /* Footer */
 #manage_footer {

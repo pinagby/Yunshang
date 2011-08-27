@@ -1,0 +1,17 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "profile"  %}
+{% block content %}
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+{% if app.session.hasFlash('notice') %}
+    <div>{{ app.session.flash('notice').message }}</div>
+{% endif %}
+profile page
+    
+{% endblock %}
+
+
+
+
