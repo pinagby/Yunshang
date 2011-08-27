@@ -10,6 +10,7 @@ the start page is from src/Yunshang/Bundle/MarketBundle/Resource/views/Default/i
 
 
 {% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_REGISTER') and not is_granted('ROLE_MANAGER') %}
+<a href="{{path('account_register')}}">Register</a>
 <a href="{{path('account_login')}}">login</a>
 {% else %}
 

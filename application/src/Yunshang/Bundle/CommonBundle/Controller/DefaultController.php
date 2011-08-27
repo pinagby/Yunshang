@@ -3,15 +3,54 @@
 namespace Yunshang\Bundle\CommonBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Yunshang\Bundle\CommonBundle\Entity\Account\Member;
+use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
+use Yunshang\Bundle\CommonBundle\Helper\AccountRegisterHelper as AccountRegisterHelper;
 
 class DefaultController extends Controller
 {
+
     /**
+     * @Route("/account/register",name="account_register")
+     * @Template()
+     */
+    public function registerAction(Request $request)
+    {
+        $t = $this->get('translator');
+        $accountRegisterHelper = new AccountRegisterHelper();
+        $form = $this->createFormBuilder($accountRegisterHelper)
+                ->add('username','text')
+                ->add('email','email')
+                ->add('password','repeated',array('type'=>"password",
+                                                  'invalid_message' => 'The password fields must match.',
+                                                  'options' => array('label' => 'Password')
+                          )
+                    )
+                ->getForm();
+        if($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+            if($form->isValid())
+            {
+                $accountService = $this->get('YunshangCommonBundle.accountService');
+                try{
+                    $accountService->register($accountRegisterHelper);
+                    $this->get('session')->setFlash('notice', array('message'=>'Success, please login'));
+                    return $this->redirect($this->generateUrl('account_login'));
+                } catch(\Exception $e){
+                    $error['message'] = $e->getMessage();
+                }
+            }
+        }
+        return array("error"=>isset($error)?$error:array(),
+                     "form"=>$form->createView()); 
+    }
+
+     /**
      * @Route("/account/login",name="account_login")
      * @Template()
      */

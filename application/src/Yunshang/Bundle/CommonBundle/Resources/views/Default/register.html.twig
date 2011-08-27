@@ -1,0 +1,18 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "Member Register"  %}
+{% block content %}
+
+{% if error %}
+    <div>{{ error.message|default("") }}</div>
+{% endif %}
+
+<form action="{{ path('account_register') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+
+{% endblock %}
+
+
+
+

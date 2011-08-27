@@ -19,11 +19,19 @@
     -->
     <parameters>
         <parameter key="YunshangCommonBundle.yunshangService.class">Yunshang\Bundle\CommonBundle\Service\YunshangService</parameter>
+        <parameter key="YunshangCommonBundle.accountService.class">Yunshang\Bundle\CommonBundle\Service\AccountService</parameter>
     </parameters>
     <services>
-        <service id="YunshangCommonBundle.yunshangService" class="%YunshangCommonBundle.yunshangService.class%">
+
+      <service id="YunshangCommonBundle.yunshangService" class="%YunshangCommonBundle.yunshangService.class%">
           <argument type="service" id="doctrine.orm.entity_manager">em</argument>
           <argument type="service" id="security.encoder_factory" >encoderFactory</argument>
-        </service>
+      </service>
+
+      <service id="YunshangCommonBundle.accountService" class="%YunshangCommonBundle.accountService.class%">
+        <argument type="service" id="doctrine.orm.entity_manager">em</argument>
+        <argument type="service" id="security.encoder_factory">encoderFactory</argument>
+      </service>
+        
     </services>
 </container>
