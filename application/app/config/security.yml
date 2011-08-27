@@ -16,10 +16,6 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js|static)/
             security: false
 
-        login:
-            pattern:  ^/account/login$
-            security: false
-
         yunshang_area:
             pattern:    ^/*
             form_login:
@@ -45,7 +41,7 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/customer/*, roles: IS_AUTHENTICATED_MANAGER}
-        - { path: ^/manager/*, roles: IS_AUTHENTICATED_MANAGER}
+        - { path: ^/customer/*, roles: ROLE_REGISTER}
+        - { path: ^/manager/*, roles: ROLE_MANAGER}
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         
