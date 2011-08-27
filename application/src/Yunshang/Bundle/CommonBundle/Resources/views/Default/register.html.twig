@@ -1,15 +1,24 @@
 {% extends "YunshangCommonBundle::layout/base.html.twig" %}
 {% block title "Member Register"  %}
+
+{% block header %}
+	<link rel="stylesheet" href="{{ asset('bundles/yunshangmanage/css/manage.css') }}" type="text/css" media="all" />
+{% endblock %}
+
 {% block content %}
 
+<div id="manage_content">
+	<h1>Member Register</h1>
 {% if error %}
-    <div>{{ error.message|default("") }}</div>
+    <div class="msg error">{{ error.message|default("") }}</div>
 {% endif %}
 
 <form action="{{ path('account_register') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <input type="submit" />
+    <p class="act"><button type="submit">Submit it!</button></p>
 </form>
+
+</div>
 
 {% endblock %}
 
