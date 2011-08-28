@@ -42,6 +42,6 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/customer/*, roles: ROLE_REGISTER}
-        - { path: ^/manager/*, roles: ROLE_MANAGER}
+        - { path: ^/manage/*, roles: ROLE_MANAGER}
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         
