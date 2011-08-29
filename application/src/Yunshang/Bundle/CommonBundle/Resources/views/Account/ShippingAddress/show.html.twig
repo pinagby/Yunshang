@@ -1,0 +1,68 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "profile"  %}
+{% block content %}
+
+<h1>Account\ShippingAddress</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
+        <tr>
+            <th>Shippingname</th>                <td>{{ entity.shippingName }}</td>        </tr>
+        <tr>
+            <th>Zip</th>                <td>{{ entity.zip }}</td>        </tr>
+        <tr>
+            <th>Mobile1</th>                <td>{{ entity.mobile1 }}</td>        </tr>
+        <tr>
+            <th>Mobile2</th>                <td>{{ entity.mobile2 }}</td>        </tr>
+        <tr>
+            <th>Phone1</th>                <td>{{ entity.phone1 }}</td>        </tr>
+        <tr>
+            <th>Phone2</th>                <td>{{ entity.phone2 }}</td>        </tr>
+        <tr>
+            <th>Country</th>                <td>{{ entity.country }}</td>        </tr>
+        <tr>
+            <th>State</th>                <td>{{ entity.state }}</td>        </tr>
+        <tr>
+            <th>City</th>                <td>{{ entity.city }}</td>        </tr>
+        <tr>
+            <th>Address1</th>                <td>{{ entity.address1 }}</td>        </tr>
+        <tr>
+            <th>Address2</th>                <td>{{ entity.address2 }}</td>        </tr>
+        <tr>
+            <th>Shippingtimestarted</th>                <td>{{ entity.shippingTimeStarted|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Shippingtimeended</th>                <td>{{ entity.shippingTimeEnded|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Sequence</th>                <td>{{ entity.sequence }}</td>        </tr>
+        <tr>
+            <th>Status</th>                <td>{{ entity.status }}</td>        </tr>
+        <tr>
+            <th>Created</th>                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Modified</th>                <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Member</th>                <td>{{ entity.member }}</td>        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('account_shippingaddress') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('account_shippingaddress_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('account_shippingaddress_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

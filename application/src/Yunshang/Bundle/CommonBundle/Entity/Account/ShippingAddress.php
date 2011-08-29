@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Yunshang\Bundle\CommonBundle\Entity\Account\ShippingAddress
  *
- * @ORM\Table()
+ * @ORM\Table(name="shipping_address")
  * @ORM\Entity
  */
 class ShippingAddress
@@ -144,6 +144,8 @@ class ShippingAddress
      * @var string $member
      *
      * @ORM\Column(name="member", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Member")
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")     * 
      */
     private $member;
 

@@ -1,0 +1,27 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "profile"  %}
+{% block content %}
+
+<h1>Account\ShippingAddress edit</h1>
+
+<form action="{{ path('account_shippingaddress_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('account_shippingaddress') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('account_shippingaddress_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

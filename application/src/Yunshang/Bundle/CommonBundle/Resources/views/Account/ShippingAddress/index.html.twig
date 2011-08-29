@@ -1,0 +1,76 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "profile"  %}
+{% block content %}
+
+<h1>Account\ShippingAddress list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Shippingname</th>
+            <th>Zip</th>
+            <th>Mobile1</th>
+            <th>Mobile2</th>
+            <th>Phone1</th>
+            <th>Phone2</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Address1</th>
+            <th>Address2</th>
+            <th>Shippingtimestarted</th>
+            <th>Shippingtimeended</th>
+            <th>Sequence</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>Member</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('account_shippingaddress_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.shippingName }}</td>
+            <td>{{ entity.zip }}</td>
+            <td>{{ entity.mobile1 }}</td>
+            <td>{{ entity.mobile2 }}</td>
+            <td>{{ entity.phone1 }}</td>
+            <td>{{ entity.phone2 }}</td>
+            <td>{{ entity.country }}</td>
+            <td>{{ entity.state }}</td>
+            <td>{{ entity.city }}</td>
+            <td>{{ entity.address1 }}</td>
+            <td>{{ entity.address2 }}</td>
+            <td>{{ entity.shippingTimeStarted|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.shippingTimeEnded|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.sequence }}</td>
+            <td>{{ entity.status }}</td>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.member }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('account_shippingaddress_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('account_shippingaddress_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('account_shippingaddress_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

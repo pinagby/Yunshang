@@ -1,0 +1,20 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "shipping addresses"  %}
+{% block content %}
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+{% if app.session.hasFlash('notice') %}
+    <div>{{ app.session.flash('notice').message }}</div>
+{% endif %}
+
+    <hr />
+    shipping address list
+    
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,23 @@
+{% extends "YunshangCommonBundle::layout/base.html.twig" %}
+{% block title "profile"  %}
+{% block content %}
+
+
+<h1>Account\ShippingAddress creation</h1>
+
+<form action="{{ path('account_shippingaddress_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('account_shippingaddress') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

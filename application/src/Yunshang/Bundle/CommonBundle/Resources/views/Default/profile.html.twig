@@ -2,6 +2,9 @@
 {% block title "profile"  %}
 {% block content %}
 
+<hr/>
+<a href="{{path("account_shippingaddress")}}">ShippingAddress management</a>
+<hr/>
 {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}
