@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AccountRegisterHelper{
     /**
      * @Assert\NotBlank()
-     * @Assert\MinLength(4)
+     * @Assert\MinLength(6)
      * @Assert\MaxLength(36)
      */
     private $username;
@@ -25,7 +25,7 @@ class AccountRegisterHelper{
 
     /**
      * @Assert\NotBlank()
-     * @Assert\MinLength(4)
+     * @Assert\MinLength(6)
      * @Assert\MaxLength(36)
      */
     private $password;

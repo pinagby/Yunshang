@@ -65,6 +65,27 @@ class AccountService
         }
     }
 
+    public function updatePassword($member,$oldPassword,$password){
+        $password=$this->encoderFactory->getEncoder($member)->encodePassword($password,$member->getSalt());
+        $oldPassword=$this->encoderFactory->getEncoder($member)->encodePassword($oldPassword,$member->getSalt());
+        $memberQuery = $this->em->createQuery(
+            'SELECT m FROM YunshangCommonBundle:Account\Member m WHERE m.username = :username and m.password = :password'
+            )->setParameter('username',$member->getUsername())
+            ->setParameter('password',$oldPassword);
+        $members = $memberQuery->getResult();
+        if(count($members)==1){
+            $m = $this->em
+                ->getRepository('YunshangCommonBundle:Account\Member')
+                ->find($member->getId());
+            $m->setPassword($password);
+            $modified = date_create(date("F j, Y, g:i a"));
+            $m->setModify($modified);
+            $this->em->persist($m);
+            $this->em->flush();
+        }else{
+            throw new \Exception('Old password is not match');
+        }
+    }
 
     /**
      *

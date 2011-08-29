@@ -10,17 +10,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
 use Yunshang\Bundle\CommonBundle\Helper\AccountRegisterHelper as AccountRegisterHelper;
+use Yunshang\Bundle\CommonBundle\Helper\AccountProfileHelper as AccountProfileHelper;
 
 class DefaultController extends Controller
 {
-
-
     /**
      *@Route("/account/profile",name="account_profile")
      *@Template()
      */
     public function profileAction(Request $request){
-        $form = $this->createFormBuilder()
+        $accountProfileHelper = new AccountProfileHelper();
+        $form = $this->createFormBuilder($accountProfileHelper)
                 ->add('oldpassword','password')
                 ->add('password','repeated',array(
                           'type'=>'password',
@@ -35,15 +35,20 @@ class DefaultController extends Controller
             {
                 $accountService = $this->get('YunshangCommonBundle.accountService');
                 try{
-                    //$accountService->register($accountRegisterHelper);
+                    $oldPassword = $accountProfileHelper->getOldpassword();
+                    $password = $accountProfileHelper->getPassword();
+                    $logger = $this->get('logger');
+                    $member = $this->get('security.context')->getToken()->getUser();
+                    $accountService->updatePassword($member,$oldPassword,$password);
                     $this->get('session')->setFlash('notice', array('message'=>'success:'));
                     return $this->redirect($this->generateUrl('account_profile'));
                 } catch(\Exception $e){
+                    echo 'fuck';
                     $error['message'] = $e->getMessage();
                 }
             }
         }
-        return array('error'=>'',
+        return array('error'=>isset($error)?$error:'',
                      'form'=>$form->createView()); 
     }
     /**

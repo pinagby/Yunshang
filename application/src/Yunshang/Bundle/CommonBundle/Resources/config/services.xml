@@ -20,7 +20,9 @@
     <parameters>
         <parameter key="YunshangCommonBundle.yunshangService.class">Yunshang\Bundle\CommonBundle\Service\YunshangService</parameter>
         <parameter key="YunshangCommonBundle.accountService.class">Yunshang\Bundle\CommonBundle\Service\AccountService</parameter>
+        <parameter key="YunshangCommonBundle.infrastructureService.class">Yunshang\Bundle\CommonBundle\Service\Infrastructure</parameter>
     </parameters>
+
     <services>
 
       <service id="YunshangCommonBundle.yunshangService" class="%YunshangCommonBundle.yunshangService.class%">
@@ -32,6 +34,10 @@
         <argument type="service" id="doctrine.orm.entity_manager">em</argument>
         <argument type="service" id="security.encoder_factory">encoderFactory</argument>
       </service>
+
+<service id="YunshangCommonBundle.infrastructureService" class="%YunshangCommonBundle.infrastructureService.class%">
+
+</service>
         
     </services>
 </container>
