@@ -8,7 +8,11 @@
 {% if app.session.hasFlash('notice') %}
     <div>{{ app.session.flash('notice').message }}</div>
 {% endif %}
-profile page
+<form action="{{ path('account_profile') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p class="act"><button type="submit">Submit it!</button></p>
+</form>
+
     
 {% endblock %}
 

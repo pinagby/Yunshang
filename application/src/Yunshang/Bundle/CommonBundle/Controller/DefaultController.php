@@ -20,7 +20,31 @@ class DefaultController extends Controller
      *@Template()
      */
     public function profileAction(Request $request){
-        return array('error'=>''); 
+        $form = $this->createFormBuilder()
+                ->add('oldpassword','password')
+                ->add('password','repeated',array(
+                          'type'=>'password',
+                          'invalid_message'=>'The password fields must match.',
+                          'options'=>array('label' => 'Password')
+                          ))
+                ->getForm();
+        if($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+            if($form->isValid())
+            {
+                $accountService = $this->get('YunshangCommonBundle.accountService');
+                try{
+                    //$accountService->register($accountRegisterHelper);
+                    $this->get('session')->setFlash('notice', array('message'=>'success:'));
+                    return $this->redirect($this->generateUrl('account_profile'));
+                } catch(\Exception $e){
+                    $error['message'] = $e->getMessage();
+                }
+            }
+        }
+        return array('error'=>'',
+                     'form'=>$form->createView()); 
     }
     /**
      * @Route("/account/register",name="account_register")
