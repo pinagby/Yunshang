@@ -3,7 +3,6 @@
 namespace Yunshang\Bundle\MarketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Yunshang\Bundle\MarketBundle\Entity\ProductType
  *
@@ -62,7 +61,6 @@ class ProductType
      * @ORM\Column(name="is_internel", type="boolean")
      */
     private $isInternel;
-
 
     /**
      * Get id
@@ -198,4 +196,8 @@ class ProductType
     {
         return $this->isInternel;
     }
+     public function __toString(){
+         return $this->name;
+    }
+
 }

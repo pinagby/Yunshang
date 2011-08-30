@@ -1,0 +1,20 @@
+{% extends "YunshangManageBundle::layout/manage_base.html.twig" %}
+
+{% block manage_content %}
+<h1>ProductCategory creation</h1>
+
+<form action="{{ path('product_category_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('product_category') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

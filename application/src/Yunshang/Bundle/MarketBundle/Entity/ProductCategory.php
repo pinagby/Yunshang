@@ -3,7 +3,7 @@
 namespace Yunshang\Bundle\MarketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
 /**
  * Yunshang\Bundle\MarketBundle\Entity\ProductCategory
  *
@@ -78,6 +78,13 @@ class ProductCategory
     private $isRoot;
 
 
+    /**
+     * @var string $member
+     *
+     * @ORM\ManyToOne(targetEntity="Yunshang\Bundle\CommonBundle\Entity\Account\Member")
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")     
+     */
+    private $member ;
     /**
      * Get id
      *
@@ -247,4 +254,27 @@ class ProductCategory
     {
         return $this->isRoot;
     }
+
+    /**
+     * Set member
+     *
+     */
+    public function setMember(\Yunshang\Bundle\CommonBundle\Entity\Account\Member $member)
+    {
+        $this->member = $member;
+    }
+
+    /**
+     * Get member
+     *
+     */
+    public function getMember()
+    {
+        return $this->member;
+    }
+
+    public function __toString(){
+        return $this->name;
+    }
+
 }

@@ -1,0 +1,55 @@
+{% extends "YunshangManageBundle::layout/manage_base.html.twig" %}
+
+{% block manage_content %}
+<h1>ProductCategory list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>Sequence</th>
+            <th>Creator</th>
+            <th>Parent</th>
+            <th>Isroot</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('product_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.sequence }}</td>
+            <td>{{ entity.creator }}</td>
+            <td>{{ entity.parent }}</td>
+            <td>{{ entity.isRoot }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('product_category_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('product_category_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('product_category_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

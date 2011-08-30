@@ -3,6 +3,10 @@
 namespace Yunshang\Bundle\MarketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Yunshang\Bundle\MarketBundle\Entity\ProductCategory as ProductCategory;
+use Yunshang\Bundle\MarketBundle\Entity\ProductAttributeSet as ProductAttributeSet;
+use Yunshang\Bundle\MarketBundle\Entity\ProductType as ProductType;
+use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member ;
 
 /**
  * Yunshang\Bundle\MarketBundle\Entity\Product
@@ -133,7 +137,39 @@ class Product
      */
     private $specialAmount;
 
+    /**
+     * @var string $productCategory
+     *
+     * @ORM\ManyToOne(targetEntity="ProductCategory")
+     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id")     
+     */
+    private $productCategory;
 
+    /**
+     * @var string $member
+     *
+     * @ORM\ManyToOne(targetEntity="Yunshang\Bundle\CommonBundle\Entity\Account\Member")
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")     
+     */
+    private $member ;
+
+    /**
+     * @var string $productAttributeSet
+     *
+     * @ORM\ManyToOne(targetEntity="ProductAttributeSet")
+     * @ORM\JoinColumn(name="product_attribute_set_id", referencedColumnName="id")     
+     */
+    private $productAttributeSet ;
+
+        /**
+     * @var string $productType
+     *
+     * @ORM\ManyToOne(targetEntity="ProductType")
+     * @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")     
+     */
+    private $productType ;
+
+    
     /**
      * Get id
      *
@@ -462,5 +498,89 @@ class Product
     public function getSpecialAmount()
     {
         return $this->specialAmount;
+    }
+
+    /**
+     * Set productCategory
+     *
+     * @param string $productCategory
+     */
+    public function setProductCategory($productCategory)
+    {
+        $this->productCategory = $productCategory;
+    }
+
+    /**
+     * Get productCategory
+     *
+     * @return string 
+     */
+    public function getProductCategory()
+    {
+        return $this->productCategory;
+    }
+
+    /**
+     * Set member
+     *
+     * @param Member $member
+     */
+    public function setMember(\Yunshang\Bundle\CommonBundle\Entity\Account\Member $member)
+    {
+        $this->member = $member;
+    }
+
+    /**
+     * Get member
+     *
+     * @return Member 
+     */
+    public function getMember()
+    {
+        return $this->member;
+    }
+
+    /**
+     * Set productAttributeSet
+     *
+     * @param Yunshang\Bundle\MarketBundle\Entity\ProductAttributeSet $productAttributeSet
+     */
+    public function setProductAttributeSet(\Yunshang\Bundle\MarketBundle\Entity\ProductAttributeSet $productAttributeSet)
+    {
+        $this->productAttributeSet = $productAttributeSet;
+    }
+
+    /**
+     * Get productAttributeSet
+     *
+     * @return Yunshang\Bundle\MarketBundle\Entity\ProductAttributeSet 
+     */
+    public function getProductAttributeSet()
+    {
+        return $this->productAttributeSet;
+    }
+
+    /**
+     * Set productType
+     *
+     * @param Yunshang\Bundle\MarketBundle\Entity\ProductType $productType
+     */
+    public function setProductType(\Yunshang\Bundle\MarketBundle\Entity\ProductType $productType)
+    {
+        $this->productType = $productType;
+    }
+
+    /**
+     * Get productType
+     *
+     * @return Yunshang\Bundle\MarketBundle\Entity\ProductType 
+     */
+    public function getProductType()
+    {
+        return $this->productType;
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 }

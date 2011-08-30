@@ -525,5 +525,9 @@ class Member implements AdvancedUserInterface
     function isEnabled(){
         return $this->getEnabled();
     }
- 
+
+    public function __toString(){
+        return $this->username;
+    }
+
 }
