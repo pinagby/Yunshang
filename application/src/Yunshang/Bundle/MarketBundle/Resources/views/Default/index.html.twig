@@ -1,8 +1,58 @@
 {% extends "YunshangCommonBundle::layout/base.html.twig" %}
 {% block title "Yunshang Market Index Page"  %}
 {% block content %}
-welcome to yunshang index page
-<br />
+<h1>Product list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Shortdescription</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>Started</th>
+            <th>Ended</th>
+            <th>Code</th>
+            <th>Price</th>
+            <th>Specialprice</th>
+            <th>Specialpricestarted</th>
+            <th>Specialpriceended</th>
+            <th>Mainpicture</th>
+            <th>Amount</th>
+            <th>Specialamount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('product_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.shortDescription }}</td>
+            <td>{{ entity.status }}</td>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.started|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.ended|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.code }}</td>
+            <td>{{ entity.price }}</td>
+            <td>{{ entity.specialPrice }}</td>
+            <td>{{ entity.specialPriceStarted|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.specialPriceEnded|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.mainPicture }}</td>
+            <td>{{ entity.amount }}</td>
+            <td>{{ entity.specialAmount }}</td>
+            <td>
+                        <a href="{{ path('market_product_show', { 'id': entity.id }) }}">show</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 the start page is from src/Yunshang/Bundle/MarketBundle/Resource/views/Default/index.html.twig.
 {% endblock %}

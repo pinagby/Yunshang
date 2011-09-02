@@ -40,8 +40,10 @@ security:
 #                remember_me_parameter: _remember_me
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/customer/*, roles: ROLE_REGISTER}
+        - { path: ^/account/*, roles:ROLE_REGISTER}
         - { path: ^/manage/*, roles: ROLE_MANAGER}
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         
