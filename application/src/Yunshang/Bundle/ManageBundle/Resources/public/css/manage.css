@@ -55,3 +55,21 @@ a:hover { background:#07d; color:#fff; }
 	 overflow:auto;
 } 
 
+#yunshang_bundle_marketbundle_productcategorytype div{
+    margin-bottom: 10px;
+    vertical-align: middle;
+}
+table{
+    text-align: center;
+}
+th{
+    width:70px;
+    margin:10px;
+}
+tr{
+    margin-bottom: 10px;
+    border-bottom: 1px solid darkgrey;
+}
+
+
+

@@ -16,9 +16,11 @@ class ProductCategoryType extends AbstractType
             ->add('modified')
             ->add('sequence')
             ->add('creator')
-            ->add('parent')
-            ->add('isRoot')
-            ->add('member')
+            ->add('parent','choice',array(
+                  'choices'=>array('en_US'=>'English','zh_CN'=>'Chinese','navi'=>'Navi')))
+            ->add('isRoot', 'checkbox', array(    
+                    'required'  => false,))
+            ->add('member')            
         ;
     }
 

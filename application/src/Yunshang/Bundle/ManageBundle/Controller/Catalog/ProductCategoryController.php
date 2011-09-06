@@ -51,7 +51,8 @@ class ProductCategoryController extends Controller
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'delete_form' => $deleteForm->createView()
+        );
     }
 
     /**
@@ -62,9 +63,16 @@ class ProductCategoryController extends Controller
      */
     public function newAction()
     {
-        $entity = new ProductCategory();
+        $entity = new ProductCategory();        
+        $showtime = date_create(date("F j, Y, g:i a"));
+        $curUser = clone $this->get("security.context")->getToken()->getUser();
+        
+        $entity->setCreated($showtime);
+        $entity->setModified($showtime);
+        $entity->setCreator($curUser);
+        
         $form   = $this->createForm(new ProductCategoryType(), $entity);
-
+        
         return array(
             'entity' => $entity,
             'form'   => $form->createView()
@@ -109,9 +117,12 @@ class ProductCategoryController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-
+        $editTime = date_create(date("F j, Y, g:i a"));
+        
         $entity = $em->getRepository('YunshangMarketBundle:ProductCategory')->find($id);
-
+        $entity->setModified($editTime);
+        
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ProductCategory entity.');
         }

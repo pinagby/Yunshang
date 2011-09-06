@@ -5,6 +5,12 @@
 
 <form action="{{ path('product_category_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
+
+    {{ form_errors(form) }}
+
+    {{ form_row(form.parent) }}
+
+    {{ form_rest(form) }}
     <p>
         <button type="submit">Create</button>
     </p>
