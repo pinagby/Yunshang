@@ -67,7 +67,10 @@ class ProductCategory
      * @var string $parent
      *
      * @ORM\Column(name="parent", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="ProductCategory")
+     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id")  
      */
+     
     private $parent;
 
     /**

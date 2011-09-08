@@ -4,6 +4,10 @@ namespace Yunshang\Bundle\MarketBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Yunshang\Bundle\MarketBundle\Entity\ProductCategory;
+
+use Doctrine\ORM\Mapping as ORM; 
+ use Doctrine\Common\Collections\ArrayCollection;
 
 class ProductCategoryType extends AbstractType
 {
@@ -16,8 +20,7 @@ class ProductCategoryType extends AbstractType
             ->add('modified')
             ->add('sequence')
             ->add('creator')
-            ->add('parent','choice',array(
-                  'choices'=>array('en_US'=>'English','zh_CN'=>'Chinese','navi'=>'Navi')))
+            ->add('parent')
             ->add('isRoot', 'checkbox', array(    
                     'required'  => false,))
             ->add('member')            
