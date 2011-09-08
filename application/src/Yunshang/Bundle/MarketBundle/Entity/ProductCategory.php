@@ -4,6 +4,7 @@ namespace Yunshang\Bundle\MarketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
+use Yunshang\Bundle\MarketBundle\Entity\ProductCategory as ProductCategory;
 /**
  * Yunshang\Bundle\MarketBundle\Entity\ProductCategory
  *
@@ -66,9 +67,8 @@ class ProductCategory
     /**
      * @var string $parent
      *
-     * @ORM\Column(name="parent", type="string", length=255)
      * @ORM\ManyToOne(targetEntity="ProductCategory")
-     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id")  
+     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id") 
      */
      
     private $parent;

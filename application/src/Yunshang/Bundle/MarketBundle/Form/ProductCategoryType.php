@@ -20,9 +20,9 @@ class ProductCategoryType extends AbstractType
             ->add('modified')
             ->add('sequence')
             ->add('creator')
-            ->add('parent')
             ->add('isRoot', 'checkbox', array(    
                     'required'  => false,))
+            ->add('parent')            
             ->add('member')            
         ;
     }

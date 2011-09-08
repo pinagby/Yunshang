@@ -89,13 +89,18 @@ class ProductCategoryController extends Controller
     public function createAction()
     {
         $entity  = new ProductCategory();
+        
         $request = $this->getRequest();
-        $form    = $this->createForm(new ProductCategoryType(), $entity);
+        $form    = $this->createForm(new ProductCategoryType(), $entity);        
         $form->bindRequest($request);
-
+        
+        if($entity->getIsRoot()){            
+            $entity ->setParent('NONE');            
+        }
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
+            $em->persist($entity);            
             $em->flush();
 
             return $this->redirect($this->generateUrl('product_category_show', array('id' => $entity->getId())));
