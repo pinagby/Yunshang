@@ -19,12 +19,11 @@ class ProductCategoryType extends AbstractType
             ->add('created')
             ->add('modified')
             ->add('sequence')
-            ->add('creator')
-            ->add('isRoot', 'checkbox', array(    
-                    'required'  => false,))
+            ->add('creator')            
             ->add('parent')            
             ->add('member')            
         ;
+        
     }
 
     public function getName()

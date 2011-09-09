@@ -94,10 +94,6 @@ class ProductCategoryController extends Controller
         $form    = $this->createForm(new ProductCategoryType(), $entity);        
         $form->bindRequest($request);
         
-        if($entity->getIsRoot()){            
-            $entity ->setParent('NONE');            
-        }
-        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);            

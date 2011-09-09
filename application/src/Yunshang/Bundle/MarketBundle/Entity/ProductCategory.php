@@ -68,18 +68,10 @@ class ProductCategory
      * @var string $parent
      *
      * @ORM\ManyToOne(targetEntity="ProductCategory")
-     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id") 
+     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id")      * 
      */
      
     private $parent;
-
-    /**
-     * @var boolean $isRoot
-     *
-     * @ORM\Column(name="isRoot", type="boolean")
-     */
-    private $isRoot;
-
 
     /**
      * @var string $member
@@ -236,26 +228,6 @@ class ProductCategory
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Set isRoot
-     *
-     * @param boolean $isRoot
-     */
-    public function setIsRoot($isRoot)
-    {
-        $this->isRoot = $isRoot;
-    }
-
-    /**
-     * Get isRoot
-     *
-     * @return boolean 
-     */
-    public function getIsRoot()
-    {
-        return $this->isRoot;
     }
 
     /**
