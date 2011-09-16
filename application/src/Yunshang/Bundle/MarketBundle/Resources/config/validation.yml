@@ -1,5 +1,0 @@
-Yunshang\MarketBundle\Entity\ProductCatergory:
-    properties:
-        parent:
-            - Blank: ~
-        

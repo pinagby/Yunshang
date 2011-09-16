@@ -23,7 +23,7 @@ class ProductCategoryType extends AbstractType
             ->add('modified')
             ->add('sequence')
             ->add('creator')
-            ->add('parent')
+            ->add('parent',null,array('required' => false))
             ->add('member')
         ;
     }

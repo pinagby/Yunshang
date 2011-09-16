@@ -69,7 +69,7 @@ class ProductCategory
      * @var string $parent 
      * 
      * @ORM\ManyToOne(targetEntity="ProductCategory")
-     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id" ,nullable=true )
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id" )
      *      
      */
      
@@ -79,7 +79,7 @@ class ProductCategory
      * @var string $member
      *
      * @ORM\ManyToOne(targetEntity="Yunshang\Bundle\CommonBundle\Entity\Account\Member")
-     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")     
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id" )     
      */
     private $member ;
     /**
