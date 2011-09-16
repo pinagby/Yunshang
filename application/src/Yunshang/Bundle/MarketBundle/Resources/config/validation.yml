@@ -1,4 +1,5 @@
-Yunshang\Bundle\ManageBundle\Entity\ProductCategory:
+Yunshang\MarketBundle\Entity\ProductCatergory:
     properties:
         parent:
-            - Choice: { choices: [chioce], message: Choose a valid parent. }
+            - Blank: ~
+        

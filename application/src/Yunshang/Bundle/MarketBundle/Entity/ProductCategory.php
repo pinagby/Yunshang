@@ -5,6 +5,7 @@ namespace Yunshang\Bundle\MarketBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
 use Yunshang\Bundle\MarketBundle\Entity\ProductCategory as ProductCategory;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Yunshang\Bundle\MarketBundle\Entity\ProductCategory
  *
@@ -65,10 +66,11 @@ class ProductCategory
     private $creator;
 
     /**
-     * @var string $parent
-     *
+     * @var string $parent 
+     * 
      * @ORM\ManyToOne(targetEntity="ProductCategory")
-     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id")      * 
+     * @ORM\JoinColumn(name="product_category_id", referencedColumnName="id" ,nullable=true )
+     *      
      */
      
     private $parent;

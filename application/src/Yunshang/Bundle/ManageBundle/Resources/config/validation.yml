@@ -1,4 +1,0 @@
-Yunshang\Bundle\MarketBundle\Entity\ProductCategory:
-    properties:
-        parent:
-            - Choice: { choices: [chioce], message: Choose a valid parent. }
