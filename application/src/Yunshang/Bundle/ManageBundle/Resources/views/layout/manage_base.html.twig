@@ -1,113 +1,91 @@
-{% extends "YunshangCommonBundle::layout/base.html.twig" %}
-{% block header %}
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html><!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<title>{% block manage_title %}{% endblock %} | Powered by yunshang.org</title>
+        <link rel="shortcut icon" href="{{ asset('bundles/yunshangcommon/images/favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/yunshangcommon/css/base.css') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ asset('bundles/yunshangmanage/css/manage.css') }}" type="text/css" media="all" />
         <script src="{{ asset('bundles/yunshangcommon/js/yui-min.js')}}"></script>
-<style>
-	.hidden { display:none; }
-	.J_menu a { cursor:pointer; background:#eee; display:inline-block; }
-	.J_menu ul {overflow:hidden; height:0;list-style:none }
-    .nav_ul {display:inline-block;}
-</style>
-{% endblock %}
+	    <!--[if lt IE 9]>
+	    <script src="{{ asset('bundles/yunshangcommon/js/html5hack.js')}}"></script>
+	    <![endif]-->
+        {% block header %}{% endblock %}
+	</head>
+	<body>
+<!--
+      <div id="header_bar">
+      </div>
+      -->
 
-        
-{% block content %}
 <div id="manage_wrapper">
-<div>
-	<div id="manage_header">
-        <div id="manage_logo">logo</div>
-        <div id="manage_top_nav">Logged in as somebody, datetime, message notice, help, <a href="{{path('account_logout')}}">logout</a>
-</div>
-        <div id="manage_main_nav">
-        <ul class="J_menu">
-          <li class="nav_ul"><a href="{{path('manage_index')}}">Dashboard</a></li>
-          <li class="nav_ul"><a href="#main">Sales</a>
-            <ul  class="hidden">
-              <li><a href="child">Orders</a></li>
-              <li><a href="child">Invoices</a></li>
-              <li><a href="child">Shipments</a></li>
-              <li><a href="child">Credit Memos</a></li>
-              <li><a href="child">Transactions</a></li>
-              <li><a href="child">Billing Agreement</a></li>
-              <li><a href="child">Terms and conditions</a></li>
-              <li><a href="child">Tax</a></li>
-            </ul>
-          </li>
-          <li class="nav_ul"><a href="#main">Catalog</a>
-            <ul class="hidden">
-               <li><a href="{{path('product')}}">Manage Products</a></li>
-               <li><a href="child">TheFind feed</a></li>
-               <li><a href="{{path('product_category')}}">Manage Category</a></li>
-               <li><a href="child">Attributes</a></li>
-               <li><a href="child">Revies and Ratings</a></li>
-               <li><a href="child">Tags</a></li>
-            </ul>
-          </li>
-          <li class="nav_ul"><a href="#main">CRM</a>
-            <ul class="hidden">
-              <li><a href="child">Manage Customers</a></li>
-              <li><a href="child">Custom Groups</a></li>
-            </ul>
-          </li>
-          <li class="nav_ul"><a href="#main">Promotions</a>
-          </li>
-          <li class="nav_ul"><a href="#main">Messages</a></li>
-          <li class="nav_ul"><a href="#main">CMS</a>
-            <ul class="hidden">
-              <li><a href="child">Pages</a></li>
-              <li><a href="child">Articles</a></li>
-              <li><a href="child">Polls</a></li>
-            </ul>
-          </li>
-          <li class="nav_ul"><a href="#main">Reports</a>
-            <ul class="hidden">
-              <li><a href="child">Sales Reports</a></li>
-              <li><a href="child">Shopping Cart Reports</a></li>
-              <li><a href="child">Products Reports</a></li>
-              <li><a href="child">Customers Reports</a></li>
-              <li><a href="child">Tags Reports</a></li>
-            </ul>
-          </li>
-          <li class="nav_ul"><a href="#main">System</a>
-            <ul class="hidden">
-              <li><a href="child">Account</a></li>
-              <li><a href="child">Notification</a></li>
-              <li><a href="child">Tools</a></li>
-              <li><a href="child">Web Service</a></li>
-              <li><a href="child">SEO</a></li>
-              <li><a href="child">Design</a></li>
-              <li><a href="child">Import&Export</a></li>
-              <li><a href="child">Currency Rates</a></li>
-              <li><a href="child">Custom Variables</a></li>
-              <li><a href="{{path('manage_system_configuration_index')}}">Configuration</a></li>
-              <li><a href="child">Order Statuses</a></li>
-              <li><a href="child">Manage Stores</a></li>
-              <li><a href="child">Index Management</a></li>
-              <li><a href="child">Cache Management</a></li>
-              <li><a href="child">Permissions</a></li>
-              <li><a href="child">Custom Variables</a></li>
-              <li><a href="child">Transactional Emails</a></li>
-            </ul>
-          </li>
-        </ul>
-        </div>
-    </div>
-	<div id="manage_wrapper" class="clearfix">
-			<div id="manage_content">
-            {% block manage_content %}
-            {% endblock %}
-            </div>
-	</div>
-	<div id="manage_footer">
-      <a href="{{path('locale_en_US')}}">English</a>
-      <a href="{{path('locale_zh_CN')}}">Chinese</a>
-      <a href="{{path('locale_navi')}}">Navi</a>
-        <center><a href="http://yunshang.org" target="_blank">yunshang.org</a></center>
-        Version:
+  <div id="manage_header">
+    <div id="manage_logo">logo</div>
+    <div id="manage_top_nav">
+        <a href="{{path('market_index')}}">Home</a>
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_REGISTER') or is_granted('ROLE_MANAGER') %}
+        <a href="{{path('account_profile')}}">{{app.user.username}}</a>
+        {% endif %}
 
-        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{path('manage_index')}}">manage panel</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_REGISTER') %}
+        <a href="{{path('customer_index')}}">customer panel</a>
+        {% endif %}
+
+        message notice
+
+        help
+        <a href="{{path('account_logout')}}">logout</a>
     </div>
-	</div>
+    <div id="manage_main_nav">
+      <ul class="J_menu">
+        <li class="nav_ul"><a href="{{path('manage_index')}}">Dashboard</a></li>
+        <li class="nav_ul"><a href="#main">Sales</a>
+          <ul  class="hidden">
+            <li><a href="child">Orders</a></li>
+            <li><a href="child">Invoices</a></li>
+          </ul>
+        </li>
+        <li class="nav_ul"><a href="#main">Catalog</a>
+          <ul class="hidden">
+            <li><a href="{{path('product')}}">Manage Products</a></li>
+            <li><a href="{{path('product_category')}}">Manage Category</a></li>
+          </ul>
+        </li>
+        <li class="nav_ul"><a href="#main">System</a>
+          <ul class="hidden">
+            <li><a href="child">Account</a></li>
+            <li><a href="child">Notification</a></li>
+            <li><a href="{{path('manage_system_configuration_index')}}">Configuration</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="manage_content" class="clearfix">
+    {% block manage_content %}
+    {% endblock %}
+  </div>
+  <div id="manage_footer">
+    <hr />
+    Powered by <a href="http://yunshang.org" target="_blank">yunshang.org</a>
+    Choose your country or region
+    <select id="locale_selector">
+      <option value="{{path('locale_en_US')}}">English</option>
+      <option value="{{path('locale_zh_CN')}}">Chinese</option>
+      <option value="{{path('locale_navi')}}">Navi</option>
+    </select>
+  </div>
+</div>
+
 <script>
 YUI().use('anim', function (Y) {
 	Y.all('.J_menu').on('click', function(e){
@@ -134,6 +112,13 @@ YUI().use('anim', function (Y) {
         child.fx.run();
 	})
 });
-</script>
 
-{% endblock %}
+//YUI().use('locale_selector', 'event', function (Y) {
+//});
+</script>
+	</body>
+</html>
+
+
+
+

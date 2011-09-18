@@ -69,7 +69,6 @@ class ProductCategoryController extends Controller
         
         $entity->setCreated($showtime);
         $entity->setModified($showtime);
-        $entity->setCreator($curUser);
         
         $form   = $this->createForm(new ProductCategoryType(), $entity);
         

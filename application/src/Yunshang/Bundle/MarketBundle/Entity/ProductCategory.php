@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Yunshang\Bundle\CommonBundle\Entity\Account\Member as Member;
 use Yunshang\Bundle\MarketBundle\Entity\ProductCategory as ProductCategory;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Yunshang\Bundle\MarketBundle\Entity\ProductCategory
  *
@@ -59,20 +60,12 @@ class ProductCategory
     private $sequence;
 
     /**
-     * @var string $creator
-     *
-     * @ORM\Column(name="creator", type="string", length=255)
-     */
-    private $creator;
-
-    /**
      * @var string $parent 
      * 
      * @ORM\ManyToOne(targetEntity="ProductCategory")
      * @ORM\JoinColumn(name="parent", referencedColumnName="id" )
      *      
      */
-     
     private $parent;
 
     /**
@@ -190,26 +183,6 @@ class ProductCategory
     public function getSequence()
     {
         return $this->sequence;
-    }
-
-    /**
-     * Set creator
-     *
-     * @param string $creator
-     */
-    public function setCreator($creator)
-    {
-        $this->creator = $creator;
-    }
-
-    /**
-     * Get creator
-     *
-     * @return string 
-     */
-    public function getCreator()
-    {
-        return $this->creator;
     }
 
     /**

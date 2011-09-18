@@ -7,7 +7,6 @@
 	<head>
 		<meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-	    <meta name="description" content="long text of this website" />
 		<title>{% block title %}{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('bundles/yunshangcommon/images/favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/yunshangcommon/css/base.css') }}" type="text/css" media="all" />
@@ -17,28 +16,27 @@
         {% block header %}{% endblock %}
 	</head>
 	<body>
-          <div id="header_bar">
-            <a href="{{path('market_index')}}">Home</a>
-{% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_REGISTER') and not is_granted('ROLE_MANAGER') %}
-<a href="{{path('account_register')}}">Register</a>
-<a href="{{path('account_login')}}">login</a>
-{% else %}
-<a href="{{path('account_profile')}}">{{app.user.username}}</a>
-<a href="{{path('account_logout')}}">logout</a>
-{% endif %}
+<!--
+      <div id="header_bar">
+        <a href="{{path('market_index')}}">Home</a>
+        {% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_REGISTER') and not is_granted('ROLE_MANAGER') %}
+        <a href="{{path('account_register')}}">Register</a>
+        <a href="{{path('account_login')}}">login</a>
+        {% else %}
+        <a href="{{path('account_profile')}}">{{app.user.username}}</a>
+        <a href="{{path('account_logout')}}">logout</a>
+        {% endif %}
 
-{% if is_granted('ROLE_ADMIN') %}
-    <a href="{{path('manage_index')}}">manage panel</a>
-{% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{path('manage_index')}}">manage panel</a>
+        {% endif %}
 
-{% if is_granted('ROLE_REGISTER') %}
-
-    <a href="{{path('customer_index')}}">customer panel</a>
-    {% endif %}
-          </div>
-		<div>
+        {% if is_granted('ROLE_REGISTER') %}
+        <a href="{{path('customer_index')}}">customer panel</a>
+        {% endif %}
+      </div>
+      -->
            {% block content %}
            {% endblock %}
-		</div>
 	</body>
 </html>

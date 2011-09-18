@@ -1,7 +1,25 @@
 {% extends "YunshangCommonBundle::layout/base.html.twig" %}
 {% block title "Yunshang Market Index Page"  %}
 {% block content %}
-<h1>Product list</h1>
+        <a href="{{path('market_index')}}">Home</a>
+        {% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_REGISTER') and not is_granted('ROLE_MANAGER') %}
+        <a href="{{path('account_register')}}">Register</a>
+        <a href="{{path('account_login')}}">login</a>
+        {% else %}
+        <a href="{{path('account_profile')}}">{{app.user.username}}</a>
+        <a href="{{path('account_logout')}}">logout</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{path('manage_index')}}">manage panel</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_REGISTER') %}
+        <a href="{{path('customer_index')}}">customer panel</a>
+        {% endif %}
+
+
+
 
 <table class="records_list">
     <thead>
