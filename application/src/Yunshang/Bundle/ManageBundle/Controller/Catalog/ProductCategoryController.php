@@ -64,11 +64,6 @@ class ProductCategoryController extends Controller
     public function newAction()
     {
         $entity = new ProductCategory();        
-        $showtime = date_create(date("F j, Y, g:i a"));
-        $curUser = clone $this->get("security.context")->getToken()->getUser();
-        
-        $entity->setCreated($showtime);
-        $entity->setModified($showtime);
         
         $form   = $this->createForm(new ProductCategoryType(), $entity);
         
@@ -92,6 +87,16 @@ class ProductCategoryController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new ProductCategoryType(), $entity);        
         $form->bindRequest($request);
+
+        $currentDatetime = date_create(date("F j, Y, g:i a"));
+        
+        $entity->setCreated($currentDatetime);
+        $entity->setModified($currentDatetime);
+
+        $currentMember = $this->get("security.context")->getToken()->getUser();
+        
+        $entity->setMember($currentMember);
+
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
@@ -121,7 +126,6 @@ class ProductCategoryController extends Controller
         
         $entity = $em->getRepository('YunshangMarketBundle:ProductCategory')->find($id);
         $entity->setModified($editTime);
-        
         
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ProductCategory entity.');

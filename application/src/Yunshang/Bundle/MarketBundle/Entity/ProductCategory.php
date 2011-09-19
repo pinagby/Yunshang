@@ -72,7 +72,7 @@ class ProductCategory
      * @var string $member
      *
      * @ORM\ManyToOne(targetEntity="Yunshang\Bundle\CommonBundle\Entity\Account\Member")
-     * @ORM\JoinColumn(name="member_id", referencedColumnName="id" )     
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id" )
      */
     private $member ;
     /**

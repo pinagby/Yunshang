@@ -19,12 +19,8 @@ class ProductCategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('created')
-            ->add('modified')
             ->add('sequence')
-            ->add('creator')
             ->add('parent',null,array('required' => false))
-            ->add('member')
         ;
     }
 
