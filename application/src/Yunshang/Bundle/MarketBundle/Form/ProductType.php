@@ -11,24 +11,11 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('code')
             ->add('description')
             ->add('shortDescription')
-            ->add('status')
-            ->add('created')
-            ->add('modified')
-            ->add('started')
-            ->add('ended')
-            ->add('code')
             ->add('price')
-            ->add('specialPrice')
-            ->add('specialPriceStarted')
-            ->add('specialPriceEnded')
-            ->add('mainPicture')
-            ->add('amount')
-            ->add('specialAmount')
             ->add('productCategory')
-            ->add('member')
-            ->add('productAttributeSet')
             ->add('productType')
         ;
     }

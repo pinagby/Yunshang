@@ -85,6 +85,14 @@ class ProductController extends Controller
         $form    = $this->createForm(new ProductType(), $entity);
         $form->bindRequest($request);
 
+        $currentDateTime = date_create(date("F j, Y, g:i a"));
+        $currentMember = $this->get("security.context")->getToken()->getUser();
+        
+        $entity->setStatus(true);
+        $entity->setMember($currentMember);
+        $entity->setCreated($currentDateTime);
+        $entity->setModified($currentDateTime);
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);

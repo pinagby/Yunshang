@@ -70,14 +70,14 @@ class Product
     /**
      * @var datetime $started
      *
-     * @ORM\Column(name="started", type="datetime")
+     * @ORM\Column(name="started", type="datetime",nullable=true)
      */
     private $started;
 
     /**
      * @var datetime $ended
      *
-     * @ORM\Column(name="ended", type="datetime")
+     * @ORM\Column(name="ended", type="datetime",nullable=true)
      */
     private $ended;
 
@@ -98,42 +98,42 @@ class Product
     /**
      * @var decimal $specialPrice
      *
-     * @ORM\Column(name="special_price", type="decimal")
+     * @ORM\Column(name="special_price", type="decimal",nullable=true)
      */
     private $specialPrice;
 
     /**
      * @var datetime $specialPriceStarted
      *
-     * @ORM\Column(name="special_price_started", type="datetime")
+     * @ORM\Column(name="special_price_started", type="datetime",nullable=true)
      */
     private $specialPriceStarted;
 
     /**
      * @var datetime $specialPriceEnded
      *
-     * @ORM\Column(name="special_price_ended", type="datetime")
+     * @ORM\Column(name="special_price_ended", type="datetime",nullable=true)
      */
     private $specialPriceEnded;
 
     /**
      * @var string $mainPicture
      *
-     * @ORM\Column(name="main_picture", type="string", length=255)
+     * @ORM\Column(name="main_picture", type="string", length=255,nullable=true)
      */
     private $mainPicture;
 
     /**
      * @var integer $amount
      *
-     * @ORM\Column(name="amount", type="integer")
+     * @ORM\Column(name="amount", type="integer",nullable=true)
      */
     private $amount;
 
     /**
      * @var integer $specialAmount
      *
-     * @ORM\Column(name="special_amount", type="integer")
+     * @ORM\Column(name="special_amount", type="integer",nullable=true)
      */
     private $specialAmount;
 
@@ -157,7 +157,7 @@ class Product
      * @var string $productAttributeSet
      *
      * @ORM\ManyToOne(targetEntity="ProductAttributeSet")
-     * @ORM\JoinColumn(name="product_attribute_set_id", referencedColumnName="id")     
+     * @ORM\JoinColumn(name="product_attribute_set_id", referencedColumnName="id",nullable=true)     
      */
     private $productAttributeSet ;
 
