@@ -1,0 +1,1 @@
+** ident space with '-' in product category management page.(create, edit, display)
