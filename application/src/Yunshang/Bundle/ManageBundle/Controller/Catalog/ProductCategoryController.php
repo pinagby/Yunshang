@@ -63,9 +63,11 @@ class ProductCategoryController extends Controller
      */
     public function newAction()
     {
-        $entity = new ProductCategory();        
-        
-        $form   = $this->createForm(new ProductCategoryType(), $entity);
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
+
+        $entity = new ProductCategory();
+        $form   = $this->createForm(new ProductCategoryType($entities), $entity);
         
         return array(
             'entity' => $entity,
