@@ -12,22 +12,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class ProductCategoryType extends AbstractType
 {
-    private $categories;
-    public function __construct($categories){
-        $this->categories = $categories;
-    }
     public function buildForm(FormBuilder $builder, array $options)
     { 
-       // array_push($options, "apple");
-        //print_r($options);
         $builder
             ->add('name')
             ->add('description')
             ->add('sequence')
-            ->add('parent','choice',array('required' => false,
-                                          'choices'=>array('a'=>'a',
-                                              'b'=>$this->categories[0])))
-        ;
+            ->add('parent','choice',array('required' => false));
     }
 
     public function getName()

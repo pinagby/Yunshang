@@ -2,3 +2,4 @@
 ** productcategory service
 ** migrate productcategorytype to manageBundle
 ** install dict for stardict
+** color theme for emacs in sunshine

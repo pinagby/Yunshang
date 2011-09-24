@@ -26,4 +26,48 @@ class ProductCategoryService
         $entities = $query->getResult();
         return $entities;
     }
+
+    /**
+     *@author <a href="http://haulynjason.net" target="_blank">Haulyn Jason</a>
+     *@fixme This function does not support unlimited subcategory, it only support 3 level
+     * I will fix this problem later, refactor to support mulitple unlimited subcategory.
+     *
+     */
+    public function getIdentedCategories(){
+        $result = array();
+        $topParentCategories = $this->getTopParentCategories();
+        foreach($topParentCategories as $category){
+            $result[]=$category;
+            if($category->hasSubCategory()){
+                foreach($category->getSubCategory() as $subCategory){
+                    $result[]=$this->buildIdentedCategoryName($subCategory);
+                    if($subCategory->hasSubCategory()){
+                        foreach($subCategory->getSubCategory() as $ssubCategory){
+                            $result[]=$this->buildIdentedCategoryName($ssubCategory);
+                        }
+            }
+
+                }
+            }
+        }
+        return $result;
+    }
+
+    private function buildIdentedCategoryName($category){
+        if($category->getDeep()===1){
+            $leng = $category->getDeep()+2;
+        }else{
+            $leng = $category->getDeep()*2+2;
+        }
+        $nameArray = array();
+        $nameArray[0] = '|';
+        for($i=1;$i<$leng-1;$i++){
+            $nameArray[$i]='-';
+        }
+        $nameArray[$leng] = $category->getName();
+        $name = implode($nameArray);
+        $category->setName($name);
+        return $category;
+    }
+
 }

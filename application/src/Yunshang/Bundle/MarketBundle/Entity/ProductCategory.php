@@ -232,7 +232,11 @@ class ProductCategory
 
 
     public function isRootCategory(){
-        return null==$this->parent();
+        return null==$this->parent;
+    }
+
+    public function hasSubCategory(){
+        return count($this->subCategory)>0;
     }
 
     public function getDeep(){
@@ -249,4 +253,28 @@ class ProductCategory
         return $this->name;
     }
 
+    public function __construct()
+    {
+        $this->subCategory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add subCategory
+     *
+     * @param Yunshang\Bundle\MarketBundle\Entity\ProductCategory $subCategory
+     */
+    public function addSubCategory(\Yunshang\Bundle\MarketBundle\Entity\ProductCategory $subCategory)
+    {
+        $this->subCategory[] = $subCategory;
+    }
+
+    /**
+     * Get subCategory
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSubCategory()
+    {
+        return $this->subCategory;
+    }
 }

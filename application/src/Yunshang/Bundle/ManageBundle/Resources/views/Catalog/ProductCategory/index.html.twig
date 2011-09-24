@@ -17,17 +17,22 @@
     {% for entity in entities %}
         <tr>
             <td>{{ entity.id }}</td>
-            <td><a href="{{ path('product_category_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+            <td>
+                  {% if entity.getDeep()>0 %}
+                  <span style="display:inline-block;margin:0 0 0 20px"></span>
+                  {% endif %}
+              <a href="{{ path('product_category_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.parent }}</td>
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('product_category_edit', { 'id': entity.id }) }}">Edit</a>
+                      <a href="{{ path('product_category_edit', { 'id': entity.id }) }}">Edit</a>
                     </li>
                 </ul>
             </td>
         </tr>
+        
     {% endfor %}
     </tbody>
 </table>

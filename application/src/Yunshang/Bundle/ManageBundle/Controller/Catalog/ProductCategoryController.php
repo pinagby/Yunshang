@@ -27,7 +27,7 @@ class ProductCategoryController extends Controller
 //        $em = $this->getDoctrine()->getEntityManager();
 //        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
         $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
-        $entities = $productCategoryService->getTopParentCategories();
+        $entities = $productCategoryService->getIdentedCategories();
         
         return array('entities' => $entities);
     }
@@ -64,11 +64,10 @@ class ProductCategoryController extends Controller
      */
     public function newAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
-
+        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
         $entity = new ProductCategory();
-        $form   = $this->createForm(new ProductCategoryType($entities), $entity);
+        $formType = new ProductCategoryType();
+        $form = $this->createForm($formType, $entity);
         
         return array(
             'entity' => $entity,
@@ -86,9 +85,8 @@ class ProductCategoryController extends Controller
     public function createAction()
     {
         $entity  = new ProductCategory();
-        
         $request = $this->getRequest();
-        $form    = $this->createForm(new ProductCategoryType(), $entity);        
+        $form= $this->createForm($formType, $entity);        
         $form->bindRequest($request);
 
         $currentDatetime = date_create(date("F j, Y, g:i a"));

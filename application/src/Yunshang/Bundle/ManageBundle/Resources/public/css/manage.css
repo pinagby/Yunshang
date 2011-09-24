@@ -66,14 +66,25 @@ form .act button { border:0 none; background:#7b2; padding:5px 20px; border-radi
 }
 
 table{
-    text-align: center;
+    text-align: left;
        margin:10px;
+       width:100%;
 }
 th{
-    width:80px;
+    width:auto;
     margin:10px;
+    padding:10px;
 }
 tr{
+    width:auto;
+    padding:0 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid darkgrey;
 }
+tr:hover{
+          background-color:#f2f2f2;
+          }
+td{
+    width:auto;
+    padding:0 10px;
+    }
