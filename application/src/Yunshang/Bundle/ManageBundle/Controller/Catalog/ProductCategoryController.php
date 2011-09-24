@@ -24,10 +24,11 @@ class ProductCategoryController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
-
+//        $em = $this->getDoctrine()->getEntityManager();
+//        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
+        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
+        $entities = $productCategoryService->getTopParentCategories();
+        
         return array('entities' => $entities);
     }
 

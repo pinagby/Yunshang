@@ -1,1 +1,4 @@
 ** ident space with '-' in product category management page.(create, edit, display)
+** productcategory service
+** migrate productcategorytype to manageBundle
+** install dict for stardict

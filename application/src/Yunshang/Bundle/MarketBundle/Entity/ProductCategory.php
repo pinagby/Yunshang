@@ -74,6 +74,13 @@ class ProductCategory
      * @ORM\ManyToOne(targetEntity="Yunshang\Bundle\CommonBundle\Entity\Account\Member")
      * @ORM\JoinColumn(name="member_id", referencedColumnName="id" )
      */
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductCategory", mappedBy="parent")
+     */
+    protected $subCategory;
+    
+
     private $member ;
     /**
      * Get id
@@ -221,6 +228,21 @@ class ProductCategory
     public function getMember()
     {
         return $this->member;
+    }
+
+
+    public function isRootCategory(){
+        return null==$this->parent();
+    }
+
+    public function getDeep(){
+        $deep = 0;
+        $current = $this;
+        while(!$current->isRootCategory()){
+            $current = $current->parent;
+            $deep = $deep+1;
+        }
+        return $deep;
     }
 
     public function __toString(){

@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="YunshangMarketBundle.productCategoryService.class">Yunshang\Bundle\MarketBundke\Service\Catalog\ProductCategoryService</parameter>
+        <parameter key="YunshangMarketBundle.productCategoryService.class">Yunshang\Bundle\MarketBundle\Service\Catalog\ProductCategoryService</parameter>
     </parameters>
 
     <services>
