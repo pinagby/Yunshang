@@ -45,7 +45,7 @@ a:hover { background:#07d; color:#fff; }
 
 /* Form */
 form { padding: 50px 50px 10px; }
-form div { padding:10px 10px; width: 500px; margin:10px auto; } 
+form div { padding:0px 10px 10px 10px; width: 500px; margin:10px auto; } 
 form label { display:inline-block; width:110px; }
 form label.required::before { content:'*'; color:#f00; margin-right:5px; }
 form div input { width:300px; padding:5px 0; }
