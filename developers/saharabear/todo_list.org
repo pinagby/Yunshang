@@ -1,5 +1,5 @@
-** ident space with '-' in product category management page.(create, edit, display)
-** productcategory service
+** product category display identable function has bugs
+** valid new product category to 3 level
 ** migrate productcategorytype to manageBundle
 ** install dict for stardict
 ** color theme for emacs in sunshine

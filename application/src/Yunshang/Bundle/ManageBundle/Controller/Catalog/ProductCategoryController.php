@@ -64,9 +64,11 @@ class ProductCategoryController extends Controller
      */
     public function newAction()
     {
-        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
         $entity = new ProductCategory();
-        $formType = new ProductCategoryType();
+
+        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
+        $entities = $productCategoryService->getIdentedCategories(2);
+        $formType = new ProductCategoryType($entities);
         $form = $this->createForm($formType, $entity);
         
         return array(
@@ -86,11 +88,15 @@ class ProductCategoryController extends Controller
     {
         $entity  = new ProductCategory();
         $request = $this->getRequest();
+
+        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
+        $entities = $productCategoryService->getIdentedCategories(2);
+        $formType = new ProductCategoryType($entities);
+
         $form= $this->createForm($formType, $entity);        
         $form->bindRequest($request);
 
         $currentDatetime = date_create(date("F j, Y, g:i a"));
-        
         $entity->setCreated($currentDatetime);
         $entity->setModified($currentDatetime);
 
@@ -98,7 +104,6 @@ class ProductCategoryController extends Controller
         
         $entity->setMember($currentMember);
 
-        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);            
