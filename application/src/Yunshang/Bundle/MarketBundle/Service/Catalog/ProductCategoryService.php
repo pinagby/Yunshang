@@ -33,7 +33,7 @@ class ProductCategoryService
      * I will fix this problem later, refactor to support mulitple unlimited subcategory.
      *
      */
-    public function getIdentedCategories(){
+    public function getIdentedCategories($level=3){
         $result = array();
         $topParentCategories = $this->getTopParentCategories();
         foreach($topParentCategories as $category){
@@ -41,7 +41,8 @@ class ProductCategoryService
             if($category->hasSubCategory()){
                 foreach($category->getSubCategory() as $subCategory){
                     $result[]=$this->buildIdentedCategoryName($subCategory);
-                    if($subCategory->hasSubCategory()){
+                    //@important you need to make sure the level to be 2 if you want people to create new subcategory
+                    if($subCategory->hasSubCategory()&&$level==3){
                         foreach($subCategory->getSubCategory() as $ssubCategory){
                             $result[]=$this->buildIdentedCategoryName($ssubCategory);
                         }
