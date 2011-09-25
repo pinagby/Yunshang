@@ -16,6 +16,7 @@ use Yunshang\Bundle\MarketBundle\Form\ProductCategoryType;
  */
 class ProductCategoryController extends Controller
 {
+
     /**
      * Lists all ProductCategory entities.
      *
@@ -24,11 +25,8 @@ class ProductCategoryController extends Controller
      */
     public function indexAction()
     {
-//        $em = $this->getDoctrine()->getEntityManager();
-//        $entities = $em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
         $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
         $entities = $productCategoryService->getIdentedCategories();
-        
         return array('entities' => $entities);
     }
 
@@ -90,26 +88,17 @@ class ProductCategoryController extends Controller
         $request = $this->getRequest();
 
         $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
-        $entities = $productCategoryService->getIdentedCategories(2);
+        $entities = $productCategoryService->getCategories();
         $formType = new ProductCategoryType($entities);
 
         $form= $this->createForm($formType, $entity);        
         $form->bindRequest($request);
 
-        $currentDatetime = date_create(date("F j, Y, g:i a"));
-        $entity->setCreated($currentDatetime);
-        $entity->setModified($currentDatetime);
-
-        $currentMember = $this->get("security.context")->getToken()->getUser();
-        
-        $entity->setMember($currentMember);
-
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);            
-            $em->flush();
+	  $currentMember = $this->get("security.context")->getToken()->getUser();
+	  $productCategoryService->createCategory($entity,$currentMember);
 
-            return $this->redirect($this->generateUrl('product_category_show', array('id' => $entity->getId())));
+	  return $this->redirect($this->generateUrl('product_category_show', array('id' => $entity->getId())));
             
         }
 
@@ -132,12 +121,17 @@ class ProductCategoryController extends Controller
         
         $entity = $em->getRepository('YunshangMarketBundle:ProductCategory')->find($id);
         $entity->setModified($editTime);
-        
+        $name=$entity->getName();
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ProductCategory entity.');
         }
 
-        $editForm = $this->createForm(new ProductCategoryType(), $entity);
+	$productCategoryService = $this->get("YunshangMarketBundle.ProductCategoryService");
+        $entities = $productCategoryService->getIdentedCategories(2);
+        $formType = new ProductCategoryType($entities);
+
+        $entity->setName($name);
+        $editForm = $this->createForm($formType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -164,7 +158,11 @@ class ProductCategoryController extends Controller
             throw $this->createNotFoundException('Unable to find ProductCategory entity.');
         }
 
-        $editForm   = $this->createForm(new ProductCategoryType(), $entity);
+        $productCategoryService = $this->get('YunshangMarketBundle.productCategoryService');
+        $entities = $productCategoryService->getCategories();
+        $formType = new ProductCategoryType($entities);
+
+        $editForm   = $this->createForm($formType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
@@ -172,10 +170,9 @@ class ProductCategoryController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('product_category_edit', array('id' => $id)));
+	  $productCategoryService->updateCategory($entity);
+	  
+	  return $this->redirect($this->generateUrl('product_category_show', array('id' => $id)));
         }
 
         return array(

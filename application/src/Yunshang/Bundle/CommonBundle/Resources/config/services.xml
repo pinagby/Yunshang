@@ -36,13 +36,12 @@
         <argument type="service" id="security.encoder_factory">encoderFactory</argument>
       </service>
 
-      <service id="YunshangCommonBundle.infrastructureService" class="%YunshangCommonBundle.infrastructureService.class%">
+      <service id="YunshangCommonBundle.infrastructureService" class="%YunshangCommonBundle.infrastructureService.class%" scope="request">
+        <argument type="service" id="request">request</argument>
       </service>
 
       <service id="YunshangCommonBundle.account.shippingAddressService" class="%YunshangCommonBundle.account.shippingAddressService.class%">
         <argument type="service" id="doctrine.orm.entity_manager">em</argument>
-        <argument type="service" id="request">request</argument>
-        
       </service>
         
     </services>

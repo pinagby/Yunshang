@@ -9,7 +9,6 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Parent</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,7 +22,6 @@
                   {% endif %}
               <a href="{{ path('product_category_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
-            <td>{{ entity.parent }}</td>
             <td>
                 <ul>
                     <li>

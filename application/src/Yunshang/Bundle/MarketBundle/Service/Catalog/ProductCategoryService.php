@@ -21,6 +21,9 @@ class ProductCategoryService
         $this->em = $em;
     }    
 
+    public function getCategories(){
+      return $this->em->getRepository('YunshangMarketBundle:ProductCategory')->findAll();
+    }
     public function getTopParentCategories(){
         $query = $this->em->createQuery('SELECT pc FROM YunshangMarketBundle:ProductCategory pc WHERE pc.parent is null');
         $entities = $query->getResult();
@@ -55,12 +58,35 @@ class ProductCategoryService
                         foreach($subCategory->getSubCategory() as $ssubCategory){
                             $result[]=$this->buildIdentedCategoryName($ssubCategory);
                         }
-            }
-
+		    }
                 }
             }
         }
         return $result;
+    }
+
+    public function createCategory($category,$member){
+      if(null!=$category->getParent()&&null!=$category->getParent()->getParent()
+	 &&null!=$category->getParent()->getParent()->getParent()){
+	throw new \OverflowException("Only 3 levels category support");
+      }
+        $currentDatetime = date_create(date("F j, Y, g:i a"));
+        $category->setCreated($currentDatetime);
+        $category->setModified($currentDatetime);
+        $category->setMember($member);
+	$this->em->persist($category);
+	$this->em->flush();
+    }
+
+    public function updateCategory($category){
+      if(null!=$category->getParent()&&null!=$category->getParent()->getParent()
+	 &&null!=$category->getParent()->getParent()->getParent()){
+	throw new \OverflowException("Only 3 levels category support");
+      }
+      $currentDatetime = date_create(date("F j,Y,g:i a"));
+      $category->setModified($currentDatetime);
+      $this->em->persist($category);
+      $this->em->flush();
     }
 
     private function buildIdentedCategoryName($category){

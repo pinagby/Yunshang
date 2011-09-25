@@ -18,12 +18,12 @@ class ProductCategoryType extends AbstractType
     }
     public function buildForm(FormBuilder $builder, array $options)
     { 
-        $builder
-            ->add('name')
-            ->add('description')
-            ->add('sequence')
-            ->add('parent',null,array('required' => false,
-                                          'choices'=>$this->categories));
+      $builder
+	->add('name')
+	->add('description')
+	->add('sequence')
+	->add('parent',null,array('required' => false,
+				  'choices'=>$this->categories));
     }
 
     public function getName()
