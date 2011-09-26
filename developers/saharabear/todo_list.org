@@ -1,4 +1,6 @@
-** valid new product category to 3 level
 ** migrate productcategorytype to manageBundle
 ** install dict for stardict
-** deattached model->ProductCategoryService
+** product management
+** product main picture management
+** product album management
+

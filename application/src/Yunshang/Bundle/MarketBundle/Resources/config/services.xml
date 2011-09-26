@@ -6,12 +6,16 @@
 
     <parameters>
         <parameter key="YunshangMarketBundle.productCategoryService.class">Yunshang\Bundle\MarketBundle\Service\Catalog\ProductCategoryService</parameter>
+	<parameter key="YunshangMarketBundle.productService.class">Yunshang\Bundle\MarketBundle\Service\Catalog\ProductService</parameter>
     </parameters>
 
     <services>
         <service id="YunshangMarketBundle.productCategoryService" class="%YunshangMarketBundle.productCategoryService.class%">
           <argument type="service" id="doctrine.orm.entity_manager">em</argument>
         </service>
+	<service id="YunshangMarketBundle.productService" class="%YunshangMarketBundle.productService.class%">
+	  <argument type="service" id="doctrine.orm.entity_manager">em</argument>
+	</service>
     </services>
 </container>
 
