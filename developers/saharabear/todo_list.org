@@ -1,6 +1,5 @@
 ** migrate productcategorytype to manageBundle
 ** install dict for stardict
-** product management
 ** product main picture management
 ** product album management
 

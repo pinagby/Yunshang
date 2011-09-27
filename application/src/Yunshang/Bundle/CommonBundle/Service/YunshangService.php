@@ -73,6 +73,34 @@ class YunshangService
         }
         $this->em->persist($productType);
         $this->em->flush();
+
+
+        $productType = $this->em
+        ->getRepository('YunshangMarketBundle:ProductType')
+        ->find(2);
+
+        if (!$productType){
+            $productType = new ProductType();
+            $productType->setId(2);
+            $productType->setName('Service Product');
+            $productType->setDescription('Service Product');
+            $productType->setStatus(true);
+            $productType->setCreated(date_create(date("F j, Y, g:i a")));
+            $productType->setModified($productType->getCreated());
+            $productType->setIsInternel(true);
+        }else if($productType->getName()!=='Service Product'){
+            $productType->setId(1);
+            $productType->setName('Service Product');
+            $productType->setDescription('Service Product');
+            $productType->setStatus(true);
+            $productType->setCreated(date_create(date("F j, Y, g:i a")));
+            $productType->setModified($productType->getCreated());
+            $productType->setIsInternel(true);
+        }
+        $this->em->persist($productType);
+        $this->em->flush();
+
+
         
     }
 

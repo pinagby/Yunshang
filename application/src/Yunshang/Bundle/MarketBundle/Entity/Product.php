@@ -119,7 +119,7 @@ class Product
     /**
      * @var string $mainPicture
      *
-     * @ORM\Column(name="main_picture", type="string", length=255,nullable=true)
+     * @ORM\Column(name="main_picture", type="string", length=2000,nullable=true)
      */
     private $mainPicture;
 

@@ -21,6 +21,7 @@
         <parameter key="YunshangCommonBundle.yunshangService.class">Yunshang\Bundle\CommonBundle\Service\YunshangService</parameter>
         <parameter key="YunshangCommonBundle.accountService.class">Yunshang\Bundle\CommonBundle\Service\AccountService</parameter>
         <parameter key="YunshangCommonBundle.infrastructureService.class">Yunshang\Bundle\CommonBundle\Service\InfrastructureService</parameter>
+	<parameter key="YunshangCommonBundle.fileUploadService.class">Yunshang\Bundle\CommonBundle\Service\FileUploadService</parameter>
         <parameter key="YunshangCommonBundle.account.shippingAddressService.class">Yunshang\Bundle\CommonBundle\Service\Account\ShippingAddressService</parameter>
     </parameters>
 
@@ -36,13 +37,15 @@
         <argument type="service" id="security.encoder_factory">encoderFactory</argument>
       </service>
 
-      <service id="YunshangCommonBundle.infrastructureService" class="%YunshangCommonBundle.infrastructureService.class%" scope="request">
-        <argument type="service" id="request">request</argument>
+      <service id="YunshangCommonBundle.infrastructureService" class="%YunshangCommonBundle.infrastructureService.class%">
       </service>
 
       <service id="YunshangCommonBundle.account.shippingAddressService" class="%YunshangCommonBundle.account.shippingAddressService.class%">
         <argument type="service" id="doctrine.orm.entity_manager">em</argument>
       </service>
         
+      <service id="YunshangCommonBundle.fileUploadService" class="%YunshangCommonBundle.fileUploadService.class%" scope="request">
+	<argument type="service" id="kernel">kernel</argument>
+      </service>
     </services>
 </container>

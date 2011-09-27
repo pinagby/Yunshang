@@ -14,31 +14,13 @@
         <tr>
             <th>Shortdescription</th>                <td>{{ entity.shortDescription }}</td>        </tr>
         <tr>
-            <th>Status</th>                <td>{{ entity.status }}</td>        </tr>
-        <tr>
-            <th>Created</th>                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
-            <th>Modified</th>                <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
-            <th>Started</th>                <td>{{ entity.started|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
-            <th>Ended</th>                <td>{{ entity.ended|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
             <th>Code</th>                <td>{{ entity.code }}</td>        </tr>
         <tr>
             <th>Price</th>                <td>{{ entity.price }}</td>        </tr>
-        <tr>
-            <th>Specialprice</th>                <td>{{ entity.specialPrice }}</td>        </tr>
-        <tr>
-            <th>Specialpricestarted</th>                <td>{{ entity.specialPriceStarted|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
-            <th>Specialpriceended</th>                <td>{{ entity.specialPriceEnded|date('Y-m-d H:i:s') }}</td>        </tr>
-        <tr>
-            <th>Mainpicture</th>                <td>{{ entity.mainPicture }}</td>        </tr>
-        <tr>
-            <th>Amount</th>                <td>{{ entity.amount }}</td>        </tr>
-        <tr>
-            <th>Specialamount</th>                <td>{{ entity.specialAmount }}</td>        </tr>
+<tr>
+<th>Main Picture</th>
+<td><img src="{{basePath}}{{entity.mainPicture}}" height="280" /></td>
+</tr>
     </tbody>
 </table>
 

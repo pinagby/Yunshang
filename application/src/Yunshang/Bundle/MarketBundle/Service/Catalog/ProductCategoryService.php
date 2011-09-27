@@ -31,19 +31,7 @@ class ProductCategoryService
     }
 
     /**
-     *@author <a href="http://haulynjason.net" target="_blank">Haulyn Jason</a>
-     *@fixme This function does not support unlimited subcategory, it only support 3 level
-     * I will fix this problem later, refactor to support mulitple unlimited subcategory.
-     *@fixme Has fatal bug, it display categories as the following
-     *
-     *
-     *1	服装鞋帽	服装鞋帽		Edit 
-     *2	 |-|-|-|-男士衬衫	男士衬衫	服装鞋帽	Edit 
-     *3	家用电器	家用电器		Edit 
-     *4	 |-|-电冰箱	电冰箱	家用电器	Edit 
-     *5	 |-电脑	电脑	家用电器	Edit
-     *
-     *@important fixme
+     * fixed
      */
     public function getIdentedCategories($level=3){
         $result = array();
@@ -96,7 +84,7 @@ class ProductCategoryService
             $leng = $category->getDeep()*2+2;
         }
         $nameArray = array();
-        $nameArray[0] = '|';
+        $nameArray[0] = ' |';
         for($i=1;$i<$leng-1;$i++){
             $nameArray[$i]='-';
         }

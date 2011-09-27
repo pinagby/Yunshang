@@ -16,6 +16,7 @@ use Yunshang\Bundle\MarketBundle\Form\ProductType;
  */
 class ProductController extends Controller
 {
+
     /**
      * Lists all Product entities.
      *
@@ -51,7 +52,8 @@ class ProductController extends Controller
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),);
+            'delete_form' => $deleteForm->createView(),
+	    'basePath' =>$this->get('request')->getBasePath());
     }
 
     /**
@@ -63,7 +65,8 @@ class ProductController extends Controller
     public function newAction()
     {
         $entity = new Product();
-        $form   = $this->createForm(new ProductType(), $entity);
+	$identedCategories = $this->get("YunshangMarketBundle.productCategoryService")->getIdentedCategories();
+        $form   = $this->createForm(new ProductType($identedCategories), $entity);
 
         return array(
             'entity' => $entity,
@@ -92,7 +95,12 @@ class ProductController extends Controller
         $entity->setMember($currentMember);
         $entity->setCreated($currentDateTime);
         $entity->setModified($currentDateTime);
-        
+
+	
+	$fileUploadService = $this->get("YunshangCommonBundle.fileUploadService");
+	$path = $fileUploadService->upload($entity->getMainPicture());
+	$entity->setMainPicture($path);
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
@@ -124,7 +132,9 @@ class ProductController extends Controller
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $editForm = $this->createForm(new ProductType(), $entity);
+	$identedCategories = $this->get("YunshangMarketBundle.productCategoryService")->getIdentedCategories();
+
+        $editForm = $this->createForm(new ProductType($identedCategories), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -146,7 +156,7 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('YunshangMarketBundle:Product')->find($id);
-
+        $mainPicture = $entity->getMainPicture();
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
@@ -158,11 +168,19 @@ class ProductController extends Controller
 
         $editForm->bindRequest($request);
 
+        if(null!=$entity->getMainPicture()){
+	    $fileUploadService = $this->get("YunshangCommonBundle.fileUploadService");
+	    $path = $fileUploadService->upload($entity->getMainPicture());
+	    $entity->setMainPicture($path);
+	}else{
+	  $entity->setMainPicture($mainPicture);
+	}
+	  
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('product_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('product_show', array('id' => $id)));
         }
 
         return array(
