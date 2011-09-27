@@ -26,13 +26,13 @@ a:hover { background:#07d; color:#fff; }
 	text-shadow:1px 1px 3px #666; border-radius:10px; background-color:rgba(0,0,0,.1); box-shadow:0 0 5px #ccc inset; }
 #manage_top_nav { float:right; color:#666; margin-top: -95px; }
 	/* menu */
-#manage_main_nav { clear:both; float:right; margin-top: -65px; }
-#manage_main_nav .J_menu a { background:rgba(160,160,160,.1); padding:2px 5px; border-radius:3px; text-shadow: 0 1px 1px #999; }
-#manage_main_nav .J_menu a:hover { background:#07d; text-shadow: -1px -1px 1px #000; }
+#manage_main_nav { clear:both; float:right; margin-top: -48px; margin-right:40px;}
+#manage_main_nav .J_menu a { background:rgba(160,160,160,.1); padding:6px 20px; border-radius:3px; text-shadow: 0 1px 1px #999; font-size:14px;}
+#manage_main_nav .J_menu a:hover { background:#07d; font-size:text-shadow: -1px -1px 1px #000; }
 #manage_main_nav .J_menu > li { position:relative; margin-left:10px; }
-#manage_main_nav .J_menu li ul { position:absolute; left:0; top:28px; z-index:3; }
+#manage_main_nav .J_menu li ul { position:absolute; left:0; top:38px; z-index:3; }
 #manage_main_nav .J_menu li ul li { position:relative; margin-bottom:5px; width:100%; white-space:nowrap; }
-#manage_main_nav .J_menu li ul li a { display:block; padding:2px 10px; }
+#manage_main_nav .J_menu li ul li a { display:block; padding:6px 20px; }
 .hidden { display:none; }
 .J_menu a { cursor:pointer; background:#eee; display:inline-block; }
 .J_menu ul {overflow:hidden; height:0;list-style:none }

@@ -25,25 +25,14 @@
 
 <div id="manage_wrapper">
   <div id="manage_header">
-    <div id="manage_logo">logo</div>
+    <div id="manage_logo"><img src="{{asset('bundles/yunshangcommon/images/logo_light.png')}}" height="60px" /> Yunshang </div>
     <div id="manage_top_nav">
-        <a href="{{path('market_index')}}">Home</a>
+        <a href="{{path('market_index')}}">Website |</a>
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_REGISTER') or is_granted('ROLE_MANAGER') %}
-        <a href="{{path('account_profile')}}">{{app.user.username}}</a>
+        <a href="{{path('account_profile')}}">{{app.user.username}}</a> |
         {% endif %}
 
-        {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{path('manage_index')}}">manage panel</a>
-        {% endif %}
-
-        {% if is_granted('ROLE_REGISTER') %}
-        <a href="{{path('customer_index')}}">customer panel</a>
-        {% endif %}
-
-        message notice
-
-        help
-        <a href="{{path('account_logout')}}">logout</a>
+        <a href="{{path('account_logout')}}">logout</a> &nbsp;&nbsp;
     </div>
     <div id="manage_main_nav">
       <ul class="J_menu">
@@ -56,8 +45,6 @@
         </li>
         <li class="nav_ul"><a href="#main">System</a>
           <ul class="hidden">
-            <li><a href="child">Account</a></li>
-            <li><a href="child">Notification</a></li>
             <li><a href="{{path('manage_system_configuration_index')}}">Configuration</a></li>
           </ul>
         </li>
