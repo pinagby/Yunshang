@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Yunshang\Bundle\ManageBundle\YunshangManageBundle(),
             new Yunshang\Bundle\MarketBundle\YunshangMarketBundle(),
             new Yunshang\Bundle\CustomerBundle\YunshangCustomerBundle(),
+            new Yunshang\Bundle\PortalBundle\YunshangPortalBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
